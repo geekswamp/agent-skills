@@ -51,8 +51,7 @@ Generate Go unit tests for the provided code using Go testing best practices.
     - Suggest a **refactor** (e.g., dependency injection).
 - Do not test private implementation details—test behavior.
 - Avoid snapshot-style assertions unless explicitly requested.
-- If achieving ≥80% coverage is not possible without testing
-  private implementation details:
+- If achieving ≥80% coverage is not possible without testing private implementation details:
     - Explain the limitation briefly
     - Suggest a refactor (interface extraction, dependency injection)
 - Avoid fake coverage (e.g. meaningless assertions).

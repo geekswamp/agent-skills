@@ -1,7 +1,5 @@
 # Widget Testing with BLoC (Freezed-based)
-This reference covers widget testing when UI depends on BLoC states defined using Freezed.
-
-Freezed supports two valid state modeling patterns. Widget tests MUST match the pattern used by the production code.
+This reference covers widget testing when UI depends on BLoC states defined using Freezed. Freezed supports two valid state modeling patterns. Widget tests MUST match the pattern used by the production code.
 
 ## Injecting BLoC
 Always inject a mocked BLoC using `BlocProvider.value`:

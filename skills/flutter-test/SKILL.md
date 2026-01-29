@@ -32,7 +32,7 @@ Generate Flutter tests following best practices for BLoC-based state management.
   - Repositories
   - Data sources
   - External services
-- **Do not** use real implementations in unit tests.
+- **Do NOT** use real implementations in unit tests.
 
 ### Widget test requirements
 - Use `flutter_test` with `WidgetTester`.
@@ -76,7 +76,6 @@ Generate Flutter tests following best practices for BLoC-based state management.
 
 ### Unit tests (BLoC / Cubit)
 - BLoC testing patterns: `references/unit_bloc_testing.md`
-- bloc_test usage: `references/bloc_test.md`
 - Mocking with mocktail: `references/mocktail.md`
 
 ### Widget tests

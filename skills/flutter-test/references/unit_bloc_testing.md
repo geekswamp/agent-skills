@@ -25,12 +25,7 @@ class MyState with _$MyState {
 }
 ```
 
-### Characteristics:
-- Each state is a distinct type.
-- State transitions are explicit and exhaustive.
-- Best for complex UI branching.
-
-Example:
+Example test:
 
 ```dart
 blocTest<MyBloc, MyState>(
@@ -65,13 +60,7 @@ class MyState with _$MyState {
 }
 ```
 
-### Characteristics
-- Single immutable state object.
-- State transitions via `copyWith`.
-- Easier persistence and serialization.
-- Common in large production apps.
-
-Example:
+Example test:
 
 ```dart
 blocTest<MyBloc, MyState>(

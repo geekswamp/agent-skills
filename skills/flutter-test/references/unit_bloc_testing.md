@@ -45,9 +45,9 @@ blocTest<MyBloc, MyState>(
 ```
 
 ### Assertion Rules (Union-Based)
-✅ Assert concrete union factories
-❌ **Do NOT** use abstract matchers (`isA<MyState>()`)
-❌ **Do NOT** partially match union states
+- ✅ Assert concrete union factories
+- ❌ **Do NOT** use abstract matchers (`isA<MyState>()`)
+- ❌ **Do NOT** partially match union states
 
 ## State Pattern 2: Status-Based State (Single Data Class)
 Example State:

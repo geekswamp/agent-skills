@@ -19,7 +19,7 @@ class MyState with _$MyState {
   const factory MyState.initial() = _Initial;
   const factory MyState.inProgress() = _InProgress;
   const factory MyState.success(List<Item> items) = _Success;
-  const factory MyState.failure(@Default('') String message) = _Failure;
+  const factory MyState.failure([@Default('') String message]) = _Failure;
 }
 ```
 

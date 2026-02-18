@@ -73,15 +73,15 @@ Generate Flutter tests following best practices for BLoC-based state management.
 - Output test code only unless explanation is explicitly requested.
 
 ## When to load references
-- Detailed technical reference: `$CODEX_HOME/skills/flutter-test/references/REFERENCE.md`.
+- Detailed technical reference: [REFERENCE.md](./references/REFERENCE.md).
 
 ### Unit tests (BLoC / Cubit)
-- BLoC testing patterns: `$CODEX_HOME/skills/flutter-test/references/unit_bloc_testing.md`
-- Mocking with mocktail: `$CODEX_HOME/skills/flutter-test/references/mocktail.md`
+- BLoC testing patterns: [unit_bloc_testing.md](./references/unit_bloc_testing.md)
+- Mocking with mocktail: [mocktail.md](./references/mocktail.md)
 
 ### Widget tests
-- Widget testing fundamentals: `$CODEX_HOME/skills/flutter-test/references/widget_testing.md`
-- Testing BLoC-powered widgets: `$CODEX_HOME/skills/flutter-test/references/bloc_widget_testing.md`
+- Widget testing fundamentals: [widget_testing.md](./references/widget_testing.md)
+- Testing BLoC-powered widgets: [bloc_widget_testing.md](./references/bloc_widget_testing.md)
 
 ## Additional guidelines
 - Prefer testing **behavior over structure**.

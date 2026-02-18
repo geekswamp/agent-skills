@@ -13,4 +13,4 @@
 
 ## When to load references
 
-- A specification for adding human and machine-readable meaning to branch: `conventional-branch.md`.
+- A specification for adding human and machine-readable meaning to branch: [conventional_branch.md](./conventional_branch.md).

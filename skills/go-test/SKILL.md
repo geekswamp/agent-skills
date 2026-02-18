@@ -55,3 +55,6 @@ Generate Go unit tests for the provided code using Go testing best practices.
     - Explain the limitation briefly
     - Suggest a refactor (interface extraction, dependency injection)
 - Avoid fake coverage (e.g. meaningless assertions).
+
+## When to load references
+- Detailed technical reference: `references/REFERENCE.md`.

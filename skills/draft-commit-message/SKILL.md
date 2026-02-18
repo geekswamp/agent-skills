@@ -9,9 +9,10 @@ Draft a conventional commit message that matches the change summary provided by 
 
 ## Requirements
 - Use the Conventional Commits format: `type(scope): summary`.
-- Use the imperative mood in the summary (for example, "Feat", "Fix", "Refactor").
+- Use the imperative mood in the summary (for example, `feat`, `fix`, `refactor`).
 - The supported types are `bump`, `feat`, `fix`, `docs`, `refactor`, `test`, `ci`, `chore`, `perf`, and `revert`.
-- Keep the summary under 72 characters.
+- The entire first line (including type and scope) must not exceed 72 characters.
+- Do not wrap the summary line.
 - If there are breaking changes, include a `BREAKING CHANGE:` footer.
 - Always use English.
 

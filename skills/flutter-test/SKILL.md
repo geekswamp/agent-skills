@@ -73,6 +73,7 @@ Generate Flutter tests following best practices for BLoC-based state management.
 - Output test code only unless explanation is explicitly requested.
 
 ## When to load references
+- Detailed technical reference: `references/REFERENCE.md`.
 
 ### Unit tests (BLoC / Cubit)
 - BLoC testing patterns: `references/unit_bloc_testing.md`

@@ -1,5 +1,5 @@
 # Mocking with mocktail (Flutter & Freezed)
-mocktail is the preferred mocking library due to null-safety support.
+`mocktail` is the preferred mocking library due to null-safety support.
 
 ## Creating Mocks
 ```dart

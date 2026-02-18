@@ -57,4 +57,4 @@ Generate Go unit tests for the provided code using Go testing best practices.
 - Avoid fake coverage (e.g. meaningless assertions).
 
 ## When to load references
-- Detailed technical reference: `references/REFERENCE.md`.
+- Detailed technical reference: `$CODEX_HOME/skills/go-test/references/REFERENCE.md`.

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Flutter Test"
+  short_description: "Generate unit and widget tests using bloc_test and mocktail"

@@ -17,9 +17,9 @@ Draft a conventional commit message that matches the change summary provided by 
 - Always use English.
 
 ## Script
-- Run `scripts/git-diff.sh` to show both unstaged and staged full diffs.
-- Pass optional file paths or flags as args, e.g. `scripts/git-diff.sh <path>`.
+- Run `$CODEX_HOME/skills/draft-commit-message/scripts/git-diff.sh` to show both unstaged and staged full diffs.
+- Pass optional file paths or flags as args, e.g. `$CODEX_HOME/skills/draft-commit-message/scripts/git-diff.sh <path>`.
 - Output order is unstaged diff first, then staged diff; add separators if needed.
 
 ## When to load references
-- Detailed technical reference: `references/REFERENCE.md`.
+- Detailed technical reference: `$CODEX_HOME/skills/draft-commit-message/references/REFERENCE.md`.

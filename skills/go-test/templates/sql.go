@@ -21,6 +21,7 @@ func NewSQLMock(t *testing.T) (*sql.DB, sqlmock.Sqlmock) {
 	db, mock, err := sqlmock.New(
 		sqlmock.QueryMatcherOption(sqlmock.QueryMatcherRegexp),
 	)
+	
 	RequireNoError(t, err)
 
 	t.Cleanup(func() {

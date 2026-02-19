@@ -34,7 +34,21 @@ func PerformGinRequest(
 ) *httptest.ResponseRecorder {
 	t.Helper()
 
-	rr := httptest.NewRecorder()
-	engine.ServeHTTP(rr, req)
-	return rr
+	recorder := httptest.NewRecorder()
+	engine.ServeHTTP(recorder, req)
+	return recorder
+}
+
+func NewGinContextWithRequest(t *testing.T, req *http.Request) *gin.Context {
+	t.Helper()
+	gin.SetMode(gin.TestMode)
+
+	recorder := httptest.NewRecorder()
+	ctx, _ := gin.CreateTestContext(recorder)
+	
+	RequireNotNil(t, ctx)
+	RequireNotNil(t, req)
+
+	ctx.Request = req
+	return ctx
 }

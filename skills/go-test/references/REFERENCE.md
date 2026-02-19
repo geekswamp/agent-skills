@@ -82,9 +82,13 @@ Do not redefine literal strings inline. The agent must use predefined constants 
 
 - Names
 - Emails
+- Addresses
+- Phone numbers
+- Numeric values
 - UUIDs (valid and invalid)
 - URLs (valid and invalid)
 - Fixed time
+- Timeout
 
 ### Example Usage
 Instead of:
@@ -93,6 +97,7 @@ Instead of:
 id := "550e8400-e29b-41d4-a716-446655440000"
 email := "alice@fake.test"
 web := "https://example.test"
+phone := "+628111111111"
 ```
 
 Use:
@@ -101,6 +106,7 @@ Use:
 id := testutil.ValidUUID1
 email := testutil.EmailAlice
 web := testutil.URLWeb
+phone := testutil.PhoneAlice
 ```
 
 ## Context, Assertion, and Table Test Helpers
@@ -144,27 +150,47 @@ testutil.RequireNoError(t, err)
 - Automatically cleans up via `t.Cleanup`
 - Improves determinism
 
-### Assertion Helper
-For fatal setup assertions, use:
+### Assertion Helper Policy
+All assertions in tests must use helpers from `testutil`.
 
+Do not call `assert.*` or `require.*` directly inside test files. If an assertion helper does not exist in `testutil`, you may add a new helper following the same pattern (`t.Helper()` + wrapped testify call).
+
+#### Example
 ```go
-testutil.RequireNoError(t, err)
+func TestCreateUser(t *testing.T) {
+    ctx := testutil.NewContext(t)
+
+    user, err := service.Create(ctx, testutil.NameAlice)
+
+    testutil.RequireNoError(t, err)
+    testutil.RequireNotNill(t, user)
+
+    testutil.AssertEqual(t, testutil.NameAlice, user.Name)
+    testutil.AssertNotNil(t, user.ID)
+}
 ```
 
-Instead of:
+#### Strict Rule
+The agent **MUST**:
+- Use `testutil.Require*` for setup failures
+- Use `testutil.Assert*` for value checks
+- Never mix direct `assert.*` or `require.*` calls
+- Add new helper functions to testutil if missing
 
-```go
-require.NoError(t, err)
-```
+#### When Adding a New Helper
+If a needed assertion is not available:
+- Add it to `testutil`
+- Wrap `testify` call
+- Add `t.Helper()`
+- Follow naming convention
 
-#### When to Use
-- DB setup
-- Mock creation
-- Transaction begin
-- Repository initialization
-- Critical preconditions
-
-Do not replace value assertions (`assert.Equal`) unless helper exists.
+#### Why This Matters
+Using assertion helpers ensures:
+- Cleaner stack traces
+- Centralized assertion behavior
+- Consistent testing style
+- Easier future refactor
+- Enforcement across the codebase
 
 ### Table-Driven Test Helper
 All table-driven tests should use:

@@ -39,39 +39,64 @@ func AssertContains(t *testing.T, s any, contains any) bool {
 
 // AssertEqual is a shortcut for assert.Equal with helper mark.
 func AssertEqual(t *testing.T, expected any, actual any) bool {
-	t.Helper();
+	t.Helper()
 	assert.Equal(t, expected, actual)
 }
 
 // AssertSame is a shortcut for assert.Same with helper mark.
 func AssertSame(t *testing.T, expected any, actual any) bool {
-	t.Helper();
+	t.Helper()
 	assert.Same(t, expected, actual)
 }
 
 // AssertEmpty is a shortcut for assert.Empty with helper mark.
 func AssertEmpty(t *testing.T, object any) bool {
-	t.Helper();
+	t.Helper()
 	assert.Empty(t, object)
 }
 
 // AssertNil is a shortcut for assert.Nil with helper mark.
 func AssertNil(t *testing.T, object any) bool {
-	t.Helper();
+	t.Helper()
 	assert.Nil(t, object)
 }
 
 // AssertTrue is a shortcut for assert.True with helper mark.
 func AssertTrue(t *testing.T, value bool) bool {
-	t.Helper();
+	t.Helper()
 	assert.True(t, value)
 }
 
 // AssertFalse is a shortcut for assert.False with helper mark.
 func AssertFalse(t *testing.T, value bool) bool {
-	t.Helper();
+	t.Helper()
 	assert.False(t, bool)
 }
+
+// AssertError is a shortcut for assert.Error with helper mark.
+func AssertError(t *testing.T, err error) bool {
+	t.Helper()
+	assert.Error(t, err)
+}
+
+// AssertNoError is a shortcut for assert.NoError with helper mark.
+func AssertNoError(t *testing.T, err error) bool {
+	t.Helper()
+	assert.NoError(t, err)
+}
+
+// AssertNotNil is a shortcut for assert.NotNil with helper mark.
+func AssertNotNil(t *testing.T, object any) bool {
+	t.Helper()
+	assert.NotNil(t, object)
+}
+
+// AssertGreater is a shortcut for assert.Greater with helper mark.
+func AssertGreater(t *testing.T, a any, b any) bool {
+    t.Helper()
+    return assert.Greater(t, a, b)
+}
+
 
 // RequireError is a shortcut for require.Error with helper mark.
 func RequireError(t *testing.T, err error) {
@@ -121,6 +146,37 @@ func RequireEqual(t *testing.T, expected any, actual any) {
 	require.Equal(t, expected, actual)
 }
 
+
+// RequireFalse is a shortcut for require.False with helper mark.
+func RequireFalse(t *testing.T, value bool) {
+	t.Helper()
+	require.False(t, value)
+}
+
+// RequireTrue is a shortcut for require.True with helper mark.
+func RequireTrue(t *testing.T, value bool) {
+	t.Helper()
+	require.True(t, value)
+}
+
+// RequireEmpty is a shortcut for require.Empty with helper mark.
+func RequireEmpty(t *testing.T, object any) {
+	t.Helper()
+	require.Empty(t, object)
+}
+
+// RequireContains is a shortcut for require.Contains with helper mark.
+func RequireContains(t *testing.T, s any, contains any) {
+	t.Helper()
+	require.Contains(t, s, contains)
+}
+
+// RequireGreater is a shortcut for assert.Greater with helper mark.
+func RequireGreater(t *testing.T, a any, b any) {
+    t.Helper()
+    return require.Greater(t, a, b)
+}
+
 //
 // ================================
 // Table Test Helper
@@ -167,6 +223,37 @@ const (
 	EmailJohn  = "john.doe@fake.test"
 	EmailJean  = "jean.doe@test.fake"
 	EmailJanet = "janet@fake.test"
+
+	// ===============================
+	// Addresses
+	// ===============================
+	AddressAlice = "123 Main Street, Suite 101, Test City, TC 12345"
+	AddressBob   = "456 Example Avenue, Apt 22B, Sample Town, ST 67890"
+	AddressJohn  = "789 Mockingbird Lane, Demo District, DD 10101"
+	AddressJean  = "321 Placeholder Road, Unit 9, Fakeville, FV 20202"
+	AddressJanet = "654 Integration Blvd, Floor 3, Dev City, DC 30303"
+
+	// ===============================
+	// Phone Numbers
+	// ===============================
+	PhoneAlice = "+628111111111"
+	PhoneBob   = "+628122222222"
+	PhoneJohn  = "+15551234567"
+	PhoneJean  = "+441234567890"
+	PhoneJanet = "+819012345678"
+
+	// ===============================
+	// Numeric Test Values
+	// ===============================
+	NumberZero       = 0
+	NumberOne        = 1
+	NumberTen        = 10
+	NumberHundred    = 100
+	NumberThousand   = 1000
+	NegativeOne      = -1
+	LargeNumber      = 999999
+	MaxLimit         = 100
+	MinLimit         = 1
 
 	// ===============================
 	// UUIDs

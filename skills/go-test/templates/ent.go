@@ -3,24 +3,24 @@ package testutil
 import (
 	"testing"
 
-	"<your-module>/ent/enttest"
-	"<your-module>/ent/migrate"
+	"entgo.io/ent/dialect"
+	"<module>/ent"
+	"<module>/ent/enttest"
+	"<module>/ent/migrate"
 )
 
-//
 // ================================
 // Ent Test Client (Project Scoped)
 // ================================
-//
 
 // NewEntTestClient creates a new ent test client.
 // It runs migration automatically and registers cleanup.
-func NewEntTestClient(t *testing.T, dsn string) *enttest.Client {
+func NewEntTestClient(t *testing.T, dsn string) *ent.Client {
 	t.Helper()
 
 	client := enttest.Open(
 		t,
-		"postgres",
+		dialect.Postgres,
 		dsn,
 		enttest.WithMigrateOptions(
 			migrate.WithGlobalUniqueID(true),

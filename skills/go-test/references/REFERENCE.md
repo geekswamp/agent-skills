@@ -211,29 +211,56 @@ for _, tt := range tests {
 
 #### Required Pattern
 ```go
-func TestDivide(t *testing.T) {
+func TestNormalizeEmail(t *testing.T) {
 	tests := []struct {
-		Name string
-		Run  func(t *testing.T)
+		name        string
+		input       string
+		expected    string
+		expectError bool
 	}{
 		{
-			Name: "success",
-			Run: func(t *testing.T) {
-				result, err := Divide(10, 2)
-				testutil.RequireNoError(t, err)
-				testutil.RequireEqual(t, 5, result)
-			},
+			name:        "valid email with uppercase",
+			input:       "  ALICE@FAKE.TEST ",
+			expected:    testutil.EmailAlice,
+			expectError: false,
 		},
 		{
-			Name: "division by zero",
-			Run: func(t *testing.T) {
-				_, err := Divide(10, 0)
-				testutil.RequireError(t, err)
-			},
+			name:        "empty email",
+			input:       "",
+			expected:    "",
+			expectError: true,
+		},
+		{
+			name:        "invalid format",
+			input:       "not-an-email",
+			expected:    "",
+			expectError: true,
 		},
 	}
 
-	testutil.RunTableTests(t, tests)
+	table := make([]testutil.TableTestCase, 0, len(tests))
+	for _, tc := range tests {
+		table = append(table, testutil.TableTestCase{
+			Name: tc.name,
+			Run: func(t *testing.T) {
+				// Act
+				result, err := NormalizeEmail(tc.input)
+
+				// Assert
+				if tc.expectError {
+					testutil.RequireError(t, err)
+					testutil.RequireEmpty(t, result)
+					return
+				}
+
+				testutil.RequireNoError(t, err)
+				testutil.RequireNotEmpty(t, result)
+				testutil.AssertEqual(t, tc.expected, result)
+			},
+		})
+	}
+
+	testutil.RunTableTests(t, table)
 }
 ```
 

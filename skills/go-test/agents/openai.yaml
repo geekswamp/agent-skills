@@ -1,3 +1,3 @@
 interface:
   display_name: "Go Test"
-  short_description: "Generate table-driven Go unit tests with strong coverage"
+  short_description: "Generate deterministic Go tests with standardized helpers, table-driven patterns, and proper infra mocks"

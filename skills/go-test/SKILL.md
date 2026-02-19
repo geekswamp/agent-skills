@@ -1,8 +1,8 @@
 ---
 name: go-test
-description: Generate high-quality Go unit tests for the given code or function.
+description: Generate deterministic Go unit tests using `testutil`, table-driven patterns, and infra mocks with ≥80% coverage.
 metadata:
-  short-description: Generate table-driven Go unit tests with strong coverage.
+  short-description: Generate deterministic Go tests with standardized helpers, table-driven patterns, and proper infra mocks.
 ---
 
 Generate Go unit tests for the provided code using Go testing best practices.

@@ -9,11 +9,9 @@ import (
 	"testing"
 )
 
-//
 // ================================
 // HTTP Request Builder
 // ================================
-//
 
 // NewJSONRequest creates an HTTP request with JSON body.
 func NewJSONRequest(t *testing.T, method, url string, body any) *http.Request {
@@ -31,22 +29,18 @@ func NewJSONRequest(t *testing.T, method, url string, body any) *http.Request {
 	return req
 }
 
-//
 // ================================
 // HTTP Recorder
 // ================================
-//
 
 // NewRecorder returns a ResponseRecorder.
 func NewRecorder() *httptest.ResponseRecorder {
 	return httptest.NewRecorder()
 }
 
-//
 // ================================
 // Execute Handler
 // ================================
-//
 
 // PerformRequest executes an HTTP handler.
 func PerformRequest(handler http.Handler, req *http.Request) *httptest.ResponseRecorder {
@@ -55,11 +49,9 @@ func PerformRequest(handler http.Handler, req *http.Request) *httptest.ResponseR
 	return rr
 }
 
-//
 // ================================
 // JSON Response Decoder
 // ================================
-//
 
 // DecodeJSON decodes JSON response body.
 func DecodeJSON[T any](t *testing.T, rr *httptest.ResponseRecorder) T {
@@ -70,11 +62,9 @@ func DecodeJSON[T any](t *testing.T, rr *httptest.ResponseRecorder) T {
 	return result
 }
 
-//
 // ================================
 // Context Injection (optional)
 // ================================
-//
 
 // WithContext injects context into request.
 func WithContext(req *http.Request, ctx context.Context) *http.Request {

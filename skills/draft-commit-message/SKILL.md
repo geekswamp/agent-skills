@@ -18,6 +18,7 @@ Draft a conventional commit message that matches the change summary provided by 
 - Always use English.
 
 ## Script
+- You can run [git-diff.sh](./scripts/git-diff.sh) script to check both unstaged and staged changes before generating the commit message, ensuring the summary accurately reflects the current modifications.
 - Always run `scripts/git-diff.sh` (or `bash scripts/git-diff.sh`) before generating the commit message.
 - Use the script output as the primary source of truth for determining the commit type and summary.
 - Run `scripts/git-diff.sh` or `bash scripts/git-diff.sh` to show both unstaged and staged full diffs.

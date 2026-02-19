@@ -19,7 +19,7 @@ import (
 func NewContext(t *testing.T) context.Context {
 	t.Helper()
 
-	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), Timeout)
 	t.Cleanup(cancel)
 
 	return ctx
@@ -192,6 +192,11 @@ const (
 	InvalidURL3 = "https:/broken-url.com" // malformed scheme
 	InvalidURL4 = "://missing-scheme.com" // missing protocol
 	InvalidURL5 = "not-a-url"
+
+	// ===============================
+	// Timeout
+	// ===============================
+	Timeout = 3 * time.Second
 )
 
 //

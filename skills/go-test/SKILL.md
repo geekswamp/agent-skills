@@ -2,7 +2,7 @@
 name: go-test
 description: Generate deterministic Go unit tests using `testutil`, table-driven patterns, and infra mocks with ≥80% coverage.
 metadata:
-  short-description: Generate deterministic Go tests with standardized helpers, table-driven patterns, and proper infra mocks.
+  short-description: GDeterministic Go tests with helpers, mocks, ≥80% coverage.
 ---
 
 Generate Go unit tests for the provided code using Go testing best practices.

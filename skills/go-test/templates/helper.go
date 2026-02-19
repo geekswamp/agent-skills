@@ -177,15 +177,17 @@ func RequireGreater(t *testing.T, a any, b any) {
 // Table Test Helper
 // ================================
 
-// RunTableTests runs table-driven tests safely.
-func RunTableTests[T any](t *testing.T, tests []struct {
+// TableTestCase represents a table-driven test case.
+type TableTestCase struct {
 	Name string
 	Run  func(t *testing.T)
-}) {
+}
+
+// RunTableTests runs table-driven tests safely.
+func RunTableTests(t *testing.T, tests []TableTestCase) {
 	t.Helper()
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.Name, func(t *testing.T) {
 			t.Parallel()
 			tt.Run(t)

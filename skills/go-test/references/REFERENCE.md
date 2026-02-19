@@ -10,12 +10,12 @@ The goal is:
 
 ## MANDATORY RULE: USE TEST HELPERS
 When generating tests, the agent **MUST**:
-- Prefer existing test helper utilities over inline setup.
+- Alway use existing test helper utilities in `<root>/testutil`.
 - Never duplicate test setup logic that already exists in `<root>/testutil`.
 - Always use deterministic placeholder data defined in `testutil`.
 - Avoid creating ad-hoc mocks when helper templates are available.
 - If a reusable template exists, use it instead of re-implementing setup logic.
-- All infrastructure templates are located in [templates](../templates/). Test helper files: `ent.go`, `gin.go`, `helper.go`, `http.go`, `redis.go`, and `sql.go`.
+- All infrastructure templates are located in [templates](../templates/). Template test helper files: `ent.go`, `gin.go`, `helper.go`, `http.go`, `redis.go`, and `sql.go`.
 
 The agent must:
 - Check the [templates](../templates/) directory before generating new helper patterns.
@@ -88,7 +88,7 @@ Do not redefine literal strings inline. The agent must use predefined constants 
 - UUIDs (valid and invalid)
 - URLs (valid and invalid)
 - Fixed time
-- Timeout
+- Pagination
 
 ### Example Usage
 Instead of:

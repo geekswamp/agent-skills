@@ -39,7 +39,7 @@ func NewSQLMock(t *testing.T) (*sql.DB, sqlmock.Sqlmock) {
 //
 
 // NewResult creates a mocked sql.Result.
-func NewResult(lastInsertID int64, rowsAffected int64) sqlmock.Result {
+func NewResult(lastInsertID int64, rowsAffected int64) sql.Result {
 	return sqlmock.NewResult(lastInsertID, rowsAffected)
 }
 

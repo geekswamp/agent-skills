@@ -15,7 +15,7 @@ When generating tests, the agent **MUST**:
 - Always use deterministic placeholder data defined in `testutil`.
 - Avoid creating ad-hoc mocks when helper templates are available.
 - If a reusable template exists, use it instead of re-implementing setup logic.
-- All infrastructure templates are located in [templates](../templates/). Test helper files: `ent.go`, `helper.go`, `redis.go`, and `sql.go`.
+- All infrastructure templates are located in [templates](../templates/). Test helper files: `ent.go`, `gin.go`, `helper.go`, `http.go`, `redis.go`, and `sql.go`.
 
 The agent must:
 - Check the [templates](../templates/) directory before generating new helper patterns.
@@ -195,14 +195,14 @@ func TestDivide(t *testing.T) {
 			Run: func(t *testing.T) {
 				result, err := Divide(10, 2)
 				testutil.RequireNoError(t, err)
-				require.Equal(t, 5, result)
+				testutil.RequireEqual(t, 5, result)
 			},
 		},
 		{
 			Name: "division by zero",
 			Run: func(t *testing.T) {
 				_, err := Divide(10, 0)
-				require.Error(t, err)
+				testutil.RequireError(t, err)
 			},
 		},
 	}
@@ -219,3 +219,71 @@ The agent must ensure:
 - No global variable mutation
 - No shared mock reuse across cases
 - If shared setup is required, initialize inside each test case.
+
+## HTTP & Gin Testing
+This section defines how the agent must generate HTTP and Gin handler tests.
+
+Tests must be deterministic, isolated, and use standardized helpers from `<root>/testutil`.
+
+**Do not** reimplement HTTP setup logic inline.
+
+### Generic HTTP Handlers (net/http)
+If the handler uses `net/http`, the agent **MUST**:
+- Use `testutil.NewJSONRequest`
+- Use `testutil.PerformRequest`
+- Use `testutil.DecodeJSON`
+- Not manually instantiate `httptest.NewRecorder`
+- Not manually encode `JSON` body
+- Not manually decode response `JSON`
+
+#### Required Pattern
+```go
+req := testutil.NewJSONRequest(t, http.MethodPost, "/users", payload)
+rr := testutil.PerformRequest(handler, req)
+
+testutil.RequireEqual(t, http.StatusCreated, rr.Code)
+
+resp := testutil.DecodeJSON[ResponseType](t, rr)
+```
+
+##### Anti-Patterns
+The agent must **NOT**:
+- Start a real HTTP server
+- Use real network ports
+- Use `http.ListenAndServe`
+- Manually marshal/unmarshal JSON
+- Inline `httptest.NewRecorder()` repeatedly
+
+### Gin Handlers
+If the handler uses Gin, the agent **MUST**:
+- Use `testutil.NewGinEngine()`
+- Use `testutil.PerformGinRequest`
+- Use `testutil.NewJSONRequest`
+- Keep Gin in test mode
+- Not call `gin.Default()` in tests
+- Not bind to real ports
+
+#### Required Pattern
+```go
+engine := testutil.NewGinEngine()
+engine.POST("/users", handler)
+
+req := testutil.NewJSONRequest(t, http.MethodPost, "/users", payload)
+rr := testutil.PerformGinRequest(t, engine, req)
+
+testutil.RequireEqual(t, http.StatusCreated, rr.Code)
+
+resp := testutil.DecodeJSON[ResponseType](t, rr)
+```
+
+### Middleware Testing (Gin)
+If middleware is involved:
+- Register middleware on the test engine
+- Test both authorized and unauthorized cases
+- Do not bypass middleware unless explicitly testing handler logic only
+
+Example:
+
+```go
+engine.Use(AuthMiddleware())
+```

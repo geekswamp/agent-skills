@@ -115,6 +115,12 @@ func RequireNotEmpty(t *testing.T, object any) {
 	require.NotEmpty(t, object)
 }
 
+// RequireEqual is a shortcut for require.Equal with helper mark.
+func RequireEqual(t *testing.T, expected any, actual any) {
+	t.Helper()
+	require.Equal(t, expected, actual)
+}
+
 //
 // ================================
 // Table Test Helper

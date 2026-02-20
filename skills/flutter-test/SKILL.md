@@ -18,7 +18,7 @@ Generate Flutter tests following best practices for BLoC-based state management.
 - Always use **English** for test names and comments.
 - Prefer readability and clarity over brevity.
 
-### Unit test requirements (state management)
+### Unit Test Requirements (State Management)
 - Use `bloc_test` for all `Bloc` or `Cubit` testing.
 - Tests must:
   - Clearly describe **initial state**, **action**, and **expected states**
@@ -34,7 +34,7 @@ Generate Flutter tests following best practices for BLoC-based state management.
   - External services
 - **Do NOT** use real implementations in unit tests.
 
-### Widget test requirements
+### Widget Test Requirements
 - Use `flutter_test` with `WidgetTester`.
 - Widget tests must:
   - Verify **rendered UI states** (loading, success, error)
@@ -45,7 +45,7 @@ Generate Flutter tests following best practices for BLoC-based state management.
   - or `MultiBlocProvider`
 - Avoid golden tests unless explicitly requested.
 
-### Assertions & style
+### Assertions & Style
 - Prefer:
   - `expect` for standard assertions
   - `verify` / `verifyNever` from `mocktail` for interaction checks
@@ -53,17 +53,17 @@ Generate Flutter tests following best practices for BLoC-based state management.
 - Use descriptive test names:
   - `"emits [Loading, Success] when fetch is successful"`
 
-## Coverage guidelines
-- Aim for **minimum 80% coverage** at the package or feature level.
+## Coverage Guidelines
+- Aim for **minimum ≥80% coverage** at the package or feature level.
 - Coverage must include:
   - All major BLoC state transitions
   - At least one widget test per critical UI state
 - Do not introduce meaningless assertions just to increase coverage.
-- If 80% coverage cannot be achieved without testing private details:
+- If ≥80% coverage cannot be achieved without testing private details:
   - Explain briefly why
   - Suggest a refactor (e.g. extract logic into BLoC or service)
 
-## Output expectations
+## Output Expectations
 - Generate **complete and runnable** test files.
 - Follow Flutter naming conventions:
   - `*_bloc_test.dart`
@@ -72,18 +72,18 @@ Generate Flutter tests following best practices for BLoC-based state management.
 - Separate Arrange / Act / Assert clearly.
 - Output test code only unless explanation is explicitly requested.
 
-## When to load references
+## When to Load References
 - Detailed technical reference: [REFERENCE.md](./references/REFERENCE.md).
 
-### Unit tests (BLoC / Cubit)
+### Unit Tests (BLoC / Cubit)
 - BLoC testing patterns: [unit_bloc_testing.md](./references/unit_bloc_testing.md)
 - Mocking with mocktail: [mocktail.md](./references/mocktail.md)
 
-### Widget tests
+### Widget Tests
 - Widget testing fundamentals: [widget_testing.md](./references/widget_testing.md)
 - Testing BLoC-powered widgets: [bloc_widget_testing.md](./references/bloc_widget_testing.md)
 
-## Additional guidelines
+## Additional Guidelines
 - Prefer testing **behavior over structure**.
 - Avoid testing Flutter framework internals.
 - Do not mock Flutter SDK classes unless unavoidable.

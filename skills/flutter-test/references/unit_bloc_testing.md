@@ -1,7 +1,7 @@
 # Unit Testing BLoC / Cubit (Freezed-based)
 This reference describes best practices for unit testing BLoC or Cubit that use Freezed for events and states. Freezed supports two valid state modeling patterns. Tests MUST match the pattern used by the production code.
 
-## Core principles
+## Core Principles
 - Test **state transitions**, not implementation details.
 - Each test must clearly describe:
   - Given (initial state)

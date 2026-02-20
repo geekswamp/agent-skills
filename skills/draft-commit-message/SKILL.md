@@ -15,7 +15,7 @@ Draft a conventional commit message that matches the change summary provided by 
 - The **entire first line (including type and scope)** must not exceed 72 characters.
 - Do not wrap the summary line.
 - If there are breaking changes, include a `BREAKING CHANGE:` footer.
-- Always use English.
+- Always use **English**.
 
 ## Script
 - You can run [git-diff.sh](./scripts/git-diff.sh) script to check both unstaged and staged changes before generating the commit message, ensuring the summary accurately reflects the current modifications.
@@ -23,9 +23,8 @@ Draft a conventional commit message that matches the change summary provided by 
 - Use the script output as the primary source of truth for determining the commit type and summary.
 - Run `scripts/git-diff.sh` or `bash scripts/git-diff.sh` to show both unstaged and staged full diffs.
 - Pass optional file paths or flags as args, e.g. `scripts/git-diff.sh <path>` or `bash scripts/git-diff.sh <path>`.
-- Output order is unstaged diff first, then staged diff; add separators if needed.
 - Prefer analyzing staged changes when drafting the commit message.
 - If the script fails, fallback to `git --no-pager diff --cached`.
 
-## When to load references
+## Please Read the References
 - Detailed technical reference: [REFERENCE.md](./references/REFERENCE.md).

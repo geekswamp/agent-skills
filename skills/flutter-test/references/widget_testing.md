@@ -1,17 +1,17 @@
-# Widget testing fundamentals
+# Widget Testing Fundamentals
 Widget tests verify UI behavior, not business logic.
 
-## What to test
+## What to Test
 - Visible widgets
 - User interactions
 - State-driven UI changes
 
-## What NOT to test
+## What NOT to Test
 - Private widget methods
 - Flutter framework internals
 - Business logic (belongs in BLoC tests)
 
-## Pumping strategy
+## Pumping Strategy
 - Use `pump()` for predictable state changes
 - Avoid excessive `pumpAndSettle()`
 
@@ -22,10 +22,10 @@ await tester.pump();
 await tester.pump(const Duration(milliseconds: 300));
 ```
 
-## Widget testing - Navigation
+## Widget Testing - Navigation
 Use `mocktail` to verify navigation behavior in widget tests. Do not rely on real Navigator observers.
 
-### Required test setup
+### Required Test Setup
 Always define the following test utilities:
 
 ```dart
@@ -54,7 +54,7 @@ MaterialApp(
 );
 ```
 
-### Verifying navigation
+### Verifying Navigation
 Verify navigation behavior using `mocktail`:
 
 ```dart
@@ -63,7 +63,7 @@ verify(() => mockNavigatorObserver.didPush(any(), any())).called(1);
 
 Use `any()` for Route arguments unless route identity matters.
 
-### Navigation testing rules
+### Navigation Testing Rules
 - Assert navigation via `NavigatorObserver`, not widget tree.
 - Do not assert internal Navigator stack state.
 - Avoid integration-style navigation flows in widget tests.

@@ -1,5 +1,4 @@
-# Allowed type values
-
+# Allowed Type Values
 - `feat`: new feature for the user, not a new feature for build script.
 - `fix`: bug fix for the user, not a fix to a build script.
 - `docs`: changes to the documentation (for example, `README.md`).
@@ -11,6 +10,5 @@
 - `revert`: reverting a previous commit.
 - `bump`: update/increment version of dependencies.
 
-## When to load references
-
+## Conventional Branch Reference
 - A specification for adding human and machine-readable meaning to branch: [conventional_branch.md](./conventional_branch.md).

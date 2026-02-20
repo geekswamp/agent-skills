@@ -1,11 +1,12 @@
 package testutil
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
+	"io"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
@@ -14,16 +15,10 @@ import (
 // ================================
 
 // NewJSONRequest creates an HTTP request with JSON body.
-func NewJSONRequest(t *testing.T, method, url string, body any) *http.Request {
+func NewJSONRequest(t *testing.T, method, url, body string) *http.Request {
 	t.Helper()
 
-	var buf bytes.Buffer
-
-	if body != nil {
-		RequireNoError(t, json.NewEncoder(&buf).Encode(body))
-	}
-
-	req := httptest.NewRequest(method, url, &buf)
+	req := httptest.NewRequest(method, url, strings.NewReader(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	return req
@@ -69,4 +64,33 @@ func DecodeJSON[T any](t *testing.T, rr *httptest.ResponseRecorder) T {
 // WithContext injects context into request.
 func WithContext(req *http.Request, ctx context.Context) *http.Request {
 	return req.WithContext(ctx)
+}
+
+// ================================
+// HTTP Request
+// ================================
+
+// PostRequest creates an HTTP Post Request.
+func PostRequest(target string, body io.Reader) *http.Request {
+	return httptest.NewRequest(http.MethodPost, target, body)
+}
+
+// GetRequest creates an HTTP GET Request.
+func GetRequest(target string, body io.Reader) *http.Request {
+	return httptest.NewRequest(http.MethodGet, target, body)
+}
+
+// PatchRequest creates an HTTP PATCH Request.
+func PatchRequest(target string, body io.Reader) *http.Request {
+	return httptest.NewRequest(http.MethodPatch, target, body)
+}
+
+// DeleteRequest creates an HTTP DELETE Request.
+func DeleteRequest(target string, body io.Reader) *http.Request {
+	return httptest.NewRequest(http.MethodDelete, target, body)
+}
+
+// PutRequest creates an HTTP PUT Request.
+func PutRequest(target string, body io.Reader) *http.Request {
+	return httptest.NewRequest(http.MethodPut, target, body)
 }

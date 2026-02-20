@@ -8,11 +8,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//
 // ================================
 // Gin Setup
 // ================================
-//
 
 // NewGinEngine creates a Gin engine in test mode.
 func NewGinEngine() *gin.Engine {
@@ -20,11 +18,9 @@ func NewGinEngine() *gin.Engine {
 	return gin.New()
 }
 
-//
 // ================================
 // Gin Perform Request
 // ================================
-//
 
 // PerformGinRequest executes request against Gin engine.
 func PerformGinRequest(
@@ -39,6 +35,23 @@ func PerformGinRequest(
 	return recorder
 }
 
+// ================================
+// Gin Context
+// ================================
+
+// NewGinContext executes Gin with context.
+func NewGinContext(t *testing.T) *gin.Context {
+	t.Helper()
+	gin.SetMode(gin.TestMode)
+
+	recorder := httptest.NewRecorder()
+	ctx, _ := gin.CreateTestContext(recorder)
+	RequireNotNil(t, ctx)
+
+	return ctx
+}
+
+// NewGinContextWithRequest executes Gin with context and request.
 func NewGinContextWithRequest(t *testing.T, req *http.Request) *gin.Context {
 	t.Helper()
 	gin.SetMode(gin.TestMode)

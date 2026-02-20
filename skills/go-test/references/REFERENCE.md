@@ -9,19 +9,29 @@ The goal is:
 - Clean architecture alignment
 
 ## MANDATORY RULE: USE TEST HELPERS
-When generating tests, the agent **MUST**:
-- Alway use existing test helper utilities in `<root>/testutil`.
-- Never duplicate test setup logic that already exists in `<root>/testutil`.
-- Always use deterministic placeholder data defined in `testutil`.
-- Avoid creating ad-hoc mocks when helper templates are available.
-- If a reusable template exists, use it instead of re-implementing setup logic.
-- All infrastructure templates are located in [templates](../templates/). Template test helper files: `ent.go`, `gin.go`, `helper.go`, `http.go`, `redis.go`, and `sql.go`.
+Before generating any test code, the agent MUST first check whether the project already contains `<root>/testutil`.
 
-The agent must:
-- Check the [templates](../templates/) directory before generating new helper patterns.
-- Use the existing template structure as the canonical implementation.
-- Not recreate template logic inside test files.
-- Not redefine helpers already provided in `<root>/testutil`.
+### Existence Check (Required)
+- If `<root>/testutil` exists:
+	- Use existing helpers.
+	- **Do NOT** regenerate templates.
+	- **Do NOT** duplicate helper logic.
+
+- If `<root>/testutil` does **NOT** exist:
+	- Generate the test helper templates from [/templates](../templates/)
+	- Create `<root>/testutil` using the canonical template files.
+	- Then proceed with test generation.
+
+This step is mandatory and must not be skipped.
+
+Template test helper files include:
+- `ent.go`
+- `gin.go`
+- `helper.go`
+- `http.go`
+- `redis.go`
+- `sql.go`
+These files are the canonical blueprint.
 
 ## SQL (database/sql + go-sqlmock)
 If the code uses `database/sql`, the agent **MUST**:

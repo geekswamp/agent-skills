@@ -249,7 +249,8 @@ func TestNormalizeEmail(t *testing.T) {
 	}
 
 	table := make([]testutil.TableTestCase, 0, len(tests))
-	for _, tc := range tests {
+	for _, tt := range tests {
+		tc := tt
 		table = append(table, testutil.TableTestCase{
 			Name: tc.name,
 			Run: func(t *testing.T) {

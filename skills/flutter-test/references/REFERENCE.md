@@ -105,3 +105,256 @@ Do not use real company domains or public services.
 - Do not mix multiple placeholder identities unless necessary.
 - Avoid excessive mock data unless it contributes to behavior validation.
 - These values are for testing clarity only and must not represent real users.
+
+## Auth Feature Output Contract
+When the feature is authentication, produce separate files:
+- `auth_bloc_test.dart` for BLoC/Cubit unit tests.
+- `login_page_widget_test.dart` (or equivalent) for widget tests.
+
+Minimum expectations:
+- Unit tests:
+  - login success emits loading/inProgress -> authenticated
+  - login failure emits loading/inProgress -> failure or unauthenticated
+- Widget tests:
+  - loading indicator is visible in loading/inProgress state
+  - error message is visible in failure state
+  - tapping login triggers expected BLoC event/action
+
+## Minimal Auth Example (Reference Shape)
+Use this section when the user asks for a concrete authentication test example and does not provide production code.
+
+Important:
+- Keep unit tests and widget tests in separate files.
+- Match the exact state pattern used by production code (union-based or status-based).
+- Do not mix assertion styles across patterns.
+
+### `auth_bloc_test.dart` (Union-Based Freezed State)
+```dart
+import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockAuthRepository extends Mock implements AuthRepository {}
+
+void main() {
+  late MockAuthRepository repository;
+
+  setUp(() {
+    repository = MockAuthRepository();
+  });
+
+  blocTest<AuthBloc, AuthState>(
+    'emits [inProgress, authenticated] when login succeeds',
+    build: () {
+      when(
+        () => repository.login(
+          email: 'alice@fake.test',
+          password: 'password123',
+        ),
+      ).thenAnswer((_) async => const User(id: '550e8400-e29b-41d4-a716-446655440000'));
+
+      return AuthBloc(authRepository: repository);
+    },
+    act: (bloc) => bloc.add(
+      const AuthEvent.loginRequested(
+        email: 'alice@fake.test',
+        password: 'password123',
+      ),
+    ),
+    expect: () => const [
+      AuthState.inProgress(),
+      AuthState.authenticated(),
+    ],
+    verify: (_) {
+      verify(
+        () => repository.login(
+          email: 'alice@fake.test',
+          password: 'password123',
+        ),
+      ).called(1);
+    },
+  );
+
+  blocTest<AuthBloc, AuthState>(
+    'emits [inProgress, failure] when login fails',
+    build: () {
+      when(
+        () => repository.login(
+          email: 'alice@fake.test',
+          password: 'wrong-password',
+        ),
+      ).thenThrow(AuthException('Invalid credentials'));
+
+      return AuthBloc(authRepository: repository);
+    },
+    act: (bloc) => bloc.add(
+      const AuthEvent.loginRequested(
+        email: 'alice@fake.test',
+        password: 'wrong-password',
+      ),
+    ),
+    expect: () => const [
+      AuthState.inProgress(),
+      AuthState.failure('Invalid credentials'),
+    ],
+    verify: (_) {
+      verify(
+        () => repository.login(
+          email: 'alice@fake.test',
+          password: 'wrong-password',
+        ),
+      ).called(1);
+    },
+  );
+}
+```
+
+### `login_page_widget_test.dart` (Union-Based Freezed State)
+```dart
+import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockAuthBloc extends MockBloc<AuthEvent, AuthState> implements AuthBloc {}
+class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+class FakeRoute extends Fake implements Route<dynamic> {}
+
+void main() {
+  late MockAuthBloc authBloc;
+  late MockNavigatorObserver navigatorObserver;
+
+  setUpAll(() {
+    registerFallbackValue(
+      const AuthEvent.loginRequested(
+        email: 'alice@fake.test',
+        password: 'password123',
+      ),
+    );
+    registerFallbackValue(FakeRoute());
+  });
+
+  setUp(() {
+    authBloc = MockAuthBloc();
+    navigatorObserver = MockNavigatorObserver();
+  });
+
+  Widget buildSubject() {
+    return MaterialApp(
+      navigatorObservers: [navigatorObserver],
+      home: BlocProvider<AuthBloc>.value(
+        value: authBloc,
+        child: const LoginPage(),
+      ),
+    );
+  }
+
+  testWidgets('shows loading indicator when bloc emits inProgress', (tester) async {
+    when(() => authBloc.state).thenReturn(const AuthState.initial());
+    whenListen(
+      authBloc,
+      Stream.fromIterable(const [AuthState.inProgress()]),
+      initialState: const AuthState.initial(),
+    );
+
+    await tester.pumpWidget(buildSubject());
+    await tester.pump();
+
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    verifyNever(() => navigatorObserver.didPush(any(), any()));
+  });
+
+  testWidgets('shows error text when bloc emits failure', (tester) async {
+    when(() => authBloc.state).thenReturn(const AuthState.initial());
+    whenListen(
+      authBloc,
+      Stream.fromIterable(const [
+        AuthState.inProgress(),
+        AuthState.failure('Invalid credentials'),
+      ]),
+      initialState: const AuthState.initial(),
+    );
+
+    await tester.pumpWidget(buildSubject());
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    expect(find.text('Invalid credentials'), findsOneWidget);
+  });
+
+  testWidgets('adds loginRequested event when login button is tapped', (tester) async {
+    when(() => authBloc.state).thenReturn(const AuthState.initial());
+    whenListen(
+      authBloc,
+      const Stream<AuthState>.empty(),
+      initialState: const AuthState.initial(),
+    );
+
+    await tester.pumpWidget(buildSubject());
+
+    await tester.enterText(find.byKey(const Key('email_input')), 'alice@fake.test');
+    await tester.enterText(find.byKey(const Key('password_input')), 'password123');
+    await tester.tap(find.byKey(const Key('login_button')));
+    await tester.pump();
+
+    verify(
+      () => authBloc.add(
+        const AuthEvent.loginRequested(
+          email: 'alice@fake.test',
+          password: 'password123',
+        ),
+      ),
+    ).called(1);
+  });
+
+  testWidgets('pushes next page when bloc emits authenticated', (tester) async {
+    when(() => authBloc.state).thenReturn(const AuthState.initial());
+    whenListen(
+      authBloc,
+      Stream.fromIterable(const [AuthState.authenticated()]),
+      initialState: const AuthState.initial(),
+    );
+
+    await tester.pumpWidget(buildSubject());
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+
+    verify(() => navigatorObserver.didPush(any(), any())).called(1);
+  });
+}
+```
+
+### Status-Based Variant (When Production State Uses `status`)
+Use this variant only if production `AuthState` is a single data class with a `status` field:
+
+```dart
+final initialState = const AuthState();
+
+blocTest<AuthBloc, AuthState>(
+  'emits loading then failure when login fails',
+  build: () => authBloc,
+  act: (bloc) => bloc.add(
+    const AuthEvent.loginRequested(
+      email: 'alice@fake.test',
+      password: 'wrong-password',
+    ),
+  ),
+  expect: () => [
+    initialState.copyWith(status: AuthStatus.inProgress),
+    initialState.copyWith(
+      status: AuthStatus.failure,
+      message: 'Invalid credentials',
+    ),
+  ],
+);
+
+whenListen(
+  mockAuthBloc,
+  Stream.fromIterable([
+    initialState.copyWith(status: AuthStatus.inProgress),
+    initialState.copyWith(status: AuthStatus.failure, message: 'Invalid credentials'),
+  ]),
+  initialState: initialState,
+);
+```

@@ -7,6 +7,21 @@ metadata:
 
 Generate Flutter tests following best practices for BLoC-based state management.
 
+## Required Test Dependencies
+Ensure the project has these `dev_dependencies` before generating tests:
+
+```yaml
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  bloc_test: ^10.0.0
+  mocktail: ^1.0.4
+```
+
+Default mocking stack for this skill remains:
+- `bloc_test` for BLoC/Cubit behavior tests.
+- `mocktail` for repositories/services and interaction verification.
+
 ## Requirements
 
 ### General
@@ -90,3 +105,5 @@ Generate Flutter tests following best practices for BLoC-based state management.
 - If a widget is hard to test:
   - Explain why briefly
   - Suggest architectural improvement (e.g. push logic into BLoC).
+
+For auth output contract and concrete auth examples, see [REFERENCE.md](./references/REFERENCE.md).

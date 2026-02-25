@@ -50,14 +50,5 @@ Generate Go unit tests for the provided code using Go testing best practices.
     - Suggest a refactor (interface extraction, dependency injection)
 - Avoid fake coverage (e.g. meaningless assertions).
 
-## Optional but Recommended
-Use the **Sequential Thinking MCP** when generating tests or infrastructure code. It helps the agent reason step-by-step before writing code, ensuring:
-- Correct helper detection (`<root>/testutil`)
-- Proper mock selection (SQL, Redis, HTTP, etc.)
-- Clear success and failure coverage (≥ 80%)
-- No duplication of template logic
-- Deterministic and architecture-compliant tests
-Not required for trivial pure functions, but highly recommended for non-trivial test generation.
-
 ## Please Read the References
 - Detailed technical reference: [REFERENCE.md](./references/REFERENCE.md).

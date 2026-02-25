@@ -8,6 +8,15 @@ The goal is:
 - High coverage
 - Clean architecture alignment
 
+## Optional but Recommended
+Use the **Sequential Thinking MCP** when generating tests or infrastructure code. It helps the agent reason step-by-step before writing code, ensuring:
+- Correct helper detection (`<root>/testutil`)
+- Proper mock selection (SQL, Redis, HTTP, etc.)
+- Clear success and failure coverage (≥ 80%)
+- No duplication of template logic
+- Deterministic and architecture-compliant tests
+Not required for trivial pure functions, but highly recommended for non-trivial test generation.
+
 ## MANDATORY RULE: USE TEST HELPERS
 Before generating any test code, the agent MUST first check whether the project already contains `<root>/testutil`.
 

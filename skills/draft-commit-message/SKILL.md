@@ -1,6 +1,6 @@
 ---
 name: draft-commit-message
-description: Draft a conventional commit message when the user asks for help writing a commit message.
+description: Draft a Conventional Commit message from current repo changes. Use when user asks for commit message help based on staged/unstaged git diff.
 compatibility: Requires git
 metadata:
   short-description: Draft an informative commit message.
@@ -18,13 +18,18 @@ Draft a conventional commit message that matches the change summary provided by 
 - Always use **English**.
 
 ## Script
-- You can run [git-diff.sh](./scripts/git-diff.sh) script to check both unstaged and staged changes before generating the commit message, ensuring the summary accurately reflects the current modifications.
-- Always run `scripts/git-diff.sh` (or `bash scripts/git-diff.sh`) before generating the commit message.
+- Run [git-diff.sh](./scripts/git-diff.sh) before generating a commit message.
+- From repository root, run:
+  - `bash skills/draft-commit-message/scripts/git-diff.sh`
+  - Optional scoped analysis: `bash skills/draft-commit-message/scripts/git-diff.sh <path>`
 - Use the script output as the primary source of truth for determining the commit type and summary.
-- Run `scripts/git-diff.sh` or `bash scripts/git-diff.sh` to show both unstaged and staged full diffs.
-- Pass optional file paths or flags as args, e.g. `scripts/git-diff.sh <path>` or `bash scripts/git-diff.sh <path>`.
+- The script shows both staged and unstaged status, diff stats, full diffs, and untracked files.
 - Prefer analyzing staged changes when drafting the commit message.
 - If the script fails, fallback to `git --no-pager diff --cached`.
 
-## Please Read the References
-- Detailed technical reference: [REFERENCE.md](./references/REFERENCE.md).
+## Output Contract
+- Return commit message text only (no explanation) unless user asks for reasoning.
+- Follow the exact output format in [REFERENCE.md](./references/REFERENCE.md):
+  - Subject: `type(scope): summary` (<=72 chars)
+  - Optional body: concise bullet points
+  - Optional footer: `BREAKING CHANGE: ...`

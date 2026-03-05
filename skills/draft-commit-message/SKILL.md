@@ -18,14 +18,12 @@ Draft a conventional commit message that matches the change summary provided by 
 - Always use **English**.
 
 ## Script
-- Run [git-diff.sh](./scripts/git-diff.sh) before generating a commit message.
-- From repository root, run:
+- Alway use [git-diff.sh](./scripts/git-diff.sh) script before generating a commit message.
+- Run:
   - `bash scripts/git-diff.sh`
   - Optional scoped analysis: `bash scripts/git-diff.sh <path>`
 - Use the script output as the primary source of truth for determining the commit type and summary.
 - The script shows both staged and unstaged status, diff stats, full diffs, and untracked files.
-- Prefer analyzing staged changes when drafting the commit message.
-- If the script fails, fallback to `git --no-pager diff --cached`.
 
 ## Output Contract
 - Return commit message text only (no explanation) unless user asks for reasoning.

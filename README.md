@@ -2,50 +2,67 @@
 
 Reusable Codex skills for common engineering workflows.
 
-This repository packages each skill with focused instructions, optional references, and helper assets (scripts/templates) so behavior stays consistent across prompts.
+This repository packages each skill with focused instructions, optional references, helper assets (`scripts/`, `templates/`), and agent metadata so behavior stays consistent across prompts.
 
 ## Included Skills
 
 | Skill | Purpose | Path |
 | --- | --- | --- |
-| `go-test` | Generate deterministic Go unit tests with table-driven patterns, mocks, and high coverage goals. | `skills/go-test/SKILL.md` |
-| `flutter-test` | Generate unit and widget tests for Flutter BLoC/Cubit projects using `bloc_test` and `mocktail`. | `skills/flutter-test/SKILL.md` |
-| `draft-commit-message` | Draft Conventional Commit messages from repository diffs. | `skills/draft-commit-message/SKILL.md` |
+| `go-test` | Generate deterministic Go unit tests using table-driven patterns, mocks, and high coverage targets. | `skills/go-test/SKILL.md` |
+| `flutter-test` | Generate unit and widget tests for Flutter BLoC/Cubit projects with `bloc_test` and `mocktail`. | `skills/flutter-test/SKILL.md` |
+| `draft-commit-message` | Draft Conventional Commit messages from staged/unstaged repository diffs. | `skills/draft-commit-message/SKILL.md` |
+| `changelog` | Generate release-ready changelog entries from git commit history. | `skills/changelog/SKILL.md` |
 
 ## Repository Structure
 
 ```text
 skills/
-  go-test/
+  changelog/
     SKILL.md
-    references/
-    templates/
-  flutter-test/
-    SKILL.md
-    references/
+    agents/openai.yaml
+    scripts/gen_changelog.sh
+    templates/CHANGELOG.md
   draft-commit-message/
     SKILL.md
+    agents/openai.yaml
     references/
     scripts/git-diff.sh
+  flutter-test/
+    SKILL.md
+    agents/openai.yaml
+    references/
+  go-test/
+    SKILL.md
+    agents/openai.yaml
+    references/
+    templates/
 context7.json
 README.md
 ```
 
-### Folder Conventions
+## Folder Conventions
 
-- `SKILL.md`: source of truth for skill behavior.
-- `references/`: deeper guidance loaded only when needed.
-- `scripts/`: executable helpers used by skill workflows.
-- `templates/`: reusable code templates (currently used by `go-test`).
+- `SKILL.md`: source of truth for skill behavior and workflow.
+- `references/`: deeper guidance that should be loaded only when needed.
+- `scripts/`: executable helpers used during skill execution.
+- `templates/`: reusable output structures (for example changelog/test scaffolds).
+- `agents/openai.yaml`: agent-level execution metadata for the skill.
 
 ## Usage Notes
 
-When invoked in Codex, the model should follow the skill's `SKILL.md` first, then load references/assets only as needed.
+When invoked in Codex, follow each skill's `SKILL.md` first, then load references/assets progressively.
 
-For `draft-commit-message`, run the helper before drafting:
+Helper scripts from the repository root:
 
 ```bash
+# Draft commit message context
 bash skills/draft-commit-message/scripts/git-diff.sh
+
+# Optional scoped diff analysis
+bash skills/draft-commit-message/scripts/git-diff.sh <path>
+
+# Generate changelog source data (JSON)
+bash skills/changelog/scripts/gen_changelog.sh
 ```
 
 ## Local Development
@@ -53,6 +70,6 @@ bash skills/draft-commit-message/scripts/git-diff.sh
 Typical maintenance workflow:
 
 1. Update the target skill's `SKILL.md`.
-2. Adjust supporting `references/`, `scripts/`, or `templates/` if needed.
-3. Validate behavior with real prompts.
+2. Update supporting `references/`, `scripts/`, `templates/`, or agent metadata.
+3. Validate behavior with real prompts and script output.
 4. Commit changes with a clear Conventional Commit message.

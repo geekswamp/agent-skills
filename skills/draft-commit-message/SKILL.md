@@ -20,8 +20,8 @@ Draft a conventional commit message that matches the change summary provided by 
 ## Script
 - Run [git-diff.sh](./scripts/git-diff.sh) before generating a commit message.
 - From repository root, run:
-  - `bash skills/draft-commit-message/scripts/git-diff.sh`
-  - Optional scoped analysis: `bash skills/draft-commit-message/scripts/git-diff.sh <path>`
+  - `bash scripts/git-diff.sh`
+  - Optional scoped analysis: `bash scripts/git-diff.sh <path>`
 - Use the script output as the primary source of truth for determining the commit type and summary.
 - The script shows both staged and unstaged status, diff stats, full diffs, and untracked files.
 - Prefer analyzing staged changes when drafting the commit message.

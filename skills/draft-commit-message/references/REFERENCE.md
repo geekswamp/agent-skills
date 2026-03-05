@@ -14,13 +14,13 @@
 Run the helper script from repository root before drafting:
 
 ```bash
-bash skills/draft-commit-message/scripts/git-diff.sh
+bash scripts/git-diff.sh
 ```
 
 Optional scoped run:
 
 ```bash
-bash skills/draft-commit-message/scripts/git-diff.sh path/to/file_or_dir
+bash scripts/git-diff.sh <path>
 ```
 
 ## Script Output Sections

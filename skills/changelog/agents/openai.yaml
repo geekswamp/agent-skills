@@ -1,0 +1,3 @@
+interface:
+  display_name: "Changelog"
+  short_description: "Generate changelog from git commits"

@@ -18,7 +18,7 @@ Draft a conventional commit message that matches the change summary provided by 
 - Always use **English**.
 
 ## Script
-- Alway use [git-diff.sh](./scripts/git-diff.sh) script before generating a commit message.
+- Alway run [git-diff.sh](./scripts/git-diff.sh) script before generating a commit message.
 - Run:
   - `bash scripts/git-diff.sh`
   - Optional scoped analysis: `bash scripts/git-diff.sh <path>`

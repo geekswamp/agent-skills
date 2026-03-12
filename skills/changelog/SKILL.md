@@ -64,6 +64,6 @@ Before finishing, review the generated changelog to ensure the following:
 
 ## Additional Guidelines
 - When release notes are requested (for example for App Store, Play Store, or announcements), generate them based on the **latest version in `CHANGELOG.md`**.
-- Follow the guidelines defined in [`references/release_note.md`](./references/release_note.md).
+- Follow the guidelines defined in [`references/release_notes.md`](./references/release_notes.md).
 - Only include the **most important user-facing improvements** from that release.
 - Ensure the final release notes follow the **structure, tone, and language limits** specified in the reference file.

@@ -1,0 +1,13 @@
+{
+  "eval_id": 3,
+  "eval_name": "auth-comprehensive",
+  "prompt": "Generate comprehensive tests (unit and widget) for the Auth feature. The production code uses Freezed union-based states (Initial, InProgress, Authenticated, Failure). The repository is AuthRepository with a login method.",
+  "assertions": [
+    "Produces 'auth_bloc_test.dart' with success and failure unit tests",
+    "Produces 'login_page_widget_test.dart' with loading, error, and interaction tests",
+    "Uses 'mocktail' to mock 'AuthRepository'",
+    "Uses 'registerFallbackValue' if necessary",
+    "Unit tests emit [InProgress, Authenticated] on success",
+    "Widget tests verify interaction triggers the bloc event"
+  ]
+}

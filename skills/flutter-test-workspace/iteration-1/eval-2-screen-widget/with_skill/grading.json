@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "The file is named 'login_screen_widget_test.dart'",
+      "passed": true,
+      "evidence": "File exists"
+    },
+    {
+      "text": "It uses 'MockBloc<AuthEvent, AuthState>' from bloc_test",
+      "passed": true,
+      "evidence": "MockBloc found"
+    },
+    {
+      "text": "It uses 'BlocProvider.value' to inject the mock bloc",
+      "passed": false,
+      "evidence": "BlocProvider.value found"
+    },
+    {
+      "text": "It uses 'whenListen' or 'when(() => bloc.state)' to simulate AuthLoading",
+      "passed": true,
+      "evidence": "Mocking logic found"
+    },
+    {
+      "text": "It asserts that 'find.byType(CircularProgressIndicator)' finds one widget",
+      "passed": true,
+      "evidence": "Assertion found"
+    },
+    {
+      "text": "It wraps the screen in a 'MaterialApp'",
+      "passed": true,
+      "evidence": "MaterialApp found"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": 0.8333333333333334
+  }
+}

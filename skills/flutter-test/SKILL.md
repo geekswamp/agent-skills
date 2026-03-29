@@ -1,6 +1,6 @@
 ---
 name: flutter-test
-description: Generate high-quality Flutter tests for BLoC-based applications.
+description: Generate high-quality unit and widget tests for Flutter applications using BLoC or Cubit state management. Make sure to use this skill whenever the user mentions generating tests, writing test cases, mocking repositories with mocktail, increasing test coverage, or verifying BLoC state transitions. It is optimized for bloc_test patterns, widget interaction testing, and Freezed-based state models. Use it for requests to create *_test.dart files, verify UI behavior (like loading indicators or button taps), or implement comprehensive test suites for new features.
 metadata:
   short-description: Generate unit and widget tests using bloc_test and mocktail.
   version: 1.0.0

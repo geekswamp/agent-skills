@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "The file is named 'counter_cubit_test.dart'",
+      "passed": true,
+      "evidence": "File exists"
+    },
+    {
+      "text": "It uses 'package:bloc_test/bloc_test.dart'",
+      "passed": true,
+      "evidence": "Import found"
+    },
+    {
+      "text": "It uses 'blocTest<CounterCubit, int>'",
+      "passed": true,
+      "evidence": "Found blocTest declaration"
+    },
+    {
+      "text": "It tests the 'increment' action and expects [1]",
+      "passed": true,
+      "evidence": "Found increment test case"
+    },
+    {
+      "text": "It tests the 'decrement' action and expects [-1]",
+      "passed": true,
+      "evidence": "Found decrement test case"
+    },
+    {
+      "text": "Arrange, Act, and Assert are clearly separated (implied by blocTest structure)",
+      "passed": true,
+      "evidence": "blocTest structure used"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

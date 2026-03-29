@@ -1,0 +1,13 @@
+{
+  "eval_id": 2,
+  "eval_name": "screen-widget",
+  "prompt": "Generate a widget test for this LoginScreen. It uses AuthBloc. Test that it shows a loading indicator when state is loading.\n\n```dart\nclass LoginScreen extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      body: BlocBuilder<AuthBloc, AuthState>( \n        builder: (context, state) {\n          if (state is AuthLoading) return CircularProgressIndicator();\n          return ElevatedButton(onPressed: () {}, child: Text('Login'));\n        },\n      ),\n    );\n  }\n}\n```\n\nNote: AuthState has AuthInitial and AuthLoading states.",
+  "assertions": [
+    "The file is named 'login_screen_widget_test.dart'",
+    "It uses 'MockBloc<AuthEvent, AuthState>' from bloc_test",
+    "It uses 'BlocProvider.value' to inject the mock bloc",
+    "It uses 'whenListen' or 'when(() => bloc.state)' to simulate AuthLoading",
+    "It asserts that 'find.byType(CircularProgressIndicator)' finds one widget",
+    "It wraps the screen in a 'MaterialApp'"
+  ]
+}

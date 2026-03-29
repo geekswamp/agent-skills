@@ -1,0 +1,22 @@
+[
+  {"query": "Generate unit tests for my AuthBloc. I want to make sure the login transitions are correct.", "should_trigger": true},
+  {"query": "I need a widget test for the login screen to check the loading indicator when the state is loading.", "should_trigger": true},
+  {"query": "Can you help me write some tests for this CounterCubit using bloc_test?", "should_trigger": true},
+  {"query": "Create a comprehensive test suite for the registration feature, including unit and widget tests.", "should_trigger": true},
+  {"query": "Write a test that verifies the CircularProgressIndicator shows up when the state is inProgress.", "should_trigger": true},
+  {"query": "How do I mock a repository with mocktail for my bloc tests? Give me an example test for my data fetching logic.", "should_trigger": true},
+  {"query": "Draft a widget test that simulates tapping the submit button and verifies the bloc event is added.", "should_trigger": true},
+  {"query": "I'm using Freezed for my bloc states. Can you generate tests that follow the union-based pattern for my feature?", "should_trigger": true},
+  {"query": "Help me reach 80% coverage for this new feature by adding unit tests for the BLoC transitions.", "should_trigger": true},
+  {"query": "Generate a test file named user_profile_widget_test.dart for the profile screen UI.", "should_trigger": true},
+  {"query": "Explain the BLoC pattern in Flutter and how it differs from Provider.", "should_trigger": false},
+  {"query": "What are the best practices for Flutter app architecture and state management?", "should_trigger": false},
+  {"query": "How do I set up a new Flutter project with the correct directory structure?", "should_trigger": false},
+  {"query": "Can you debug this layout error in my main.dart file?", "should_trigger": false},
+  {"query": "Write a README.md for my Flutter package including usage examples.", "should_trigger": false},
+  {"query": "Convert this JSON data into a Dart class using Freezed annotations.", "should_trigger": false},
+  {"query": "Help me write a conventional commit message for the test changes I just finished.", "should_trigger": false},
+  {"query": "How do I run my Flutter tests in the terminal using the CLI?", "should_trigger": false},
+  {"query": "Update the changelog with the information about the new tests I added to the repo.", "should_trigger": false},
+  {"query": "Draft an email to my team about our current test coverage status and roadmap.", "should_trigger": false}
+]

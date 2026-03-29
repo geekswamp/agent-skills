@@ -1,0 +1,44 @@
+{
+  "skill_name": "flutter-test",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate a unit test for this CounterCubit using bloc_test and mocktail.\n\n```dart\nclass CounterCubit extends Cubit<int> {\n  CounterCubit() : super(0);\n  void increment() => emit(state + 1);\n  void decrement() => emit(state - 1);\n}\n```",
+      "expected_output": "A complete counter_cubit_test.dart file using blocTest, asserting correct state transitions for increment and decrement.",
+      "expectations": [
+        "The file is named 'counter_cubit_test.dart'",
+        "It uses 'package:bloc_test/bloc_test.dart'",
+        "It uses 'blocTest<CounterCubit, int>'",
+        "It tests the 'increment' action and expects [1]",
+        "It tests the 'decrement' action and expects [-1]",
+        "Arrange, Act, and Assert are clearly separated (implied by blocTest structure)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Generate a widget test for this LoginScreen. It uses AuthBloc. Test that it shows a loading indicator when state is loading.\n\n```dart\nclass LoginScreen extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      body: BlocBuilder<AuthBloc, AuthState>( \n        builder: (context, state) {\n          if (state is AuthLoading) return CircularProgressIndicator();\n          return ElevatedButton(onPressed: () {}, child: Text('Login'));\n        },\n      ),\n    );\n  }\n}\n```\n\nNote: AuthState has AuthInitial and AuthLoading states.",
+      "expected_output": "A login_screen_widget_test.dart file that mocks AuthBloc and verifies the CircularProgressIndicator visibility.",
+      "expectations": [
+        "The file is named 'login_screen_widget_test.dart'",
+        "It uses 'MockBloc<AuthEvent, AuthState>' from bloc_test",
+        "It uses 'BlocProvider.value' to inject the mock bloc",
+        "It uses 'whenListen' or 'when(() => bloc.state)' to simulate AuthLoading",
+        "It asserts that 'find.byType(CircularProgressIndicator)' finds one widget",
+        "It wraps the screen in a 'MaterialApp'"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Generate comprehensive tests (unit and widget) for the Auth feature. The production code uses Freezed union-based states (Initial, InProgress, Authenticated, Failure). The repository is AuthRepository with a login method.",
+      "expected_output": "Two files: auth_bloc_test.dart and login_page_widget_test.dart following the skill's reference guidelines.",
+      "expectations": [
+        "Produces 'auth_bloc_test.dart' with success and failure unit tests",
+        "Produces 'login_page_widget_test.dart' with loading, error, and interaction tests",
+        "Uses 'mocktail' to mock 'AuthRepository'",
+        "Uses 'registerFallbackValue' if necessary",
+        "Unit tests emit [InProgress, Authenticated] on success",
+        "Widget tests verify interaction triggers the bloc event"
+      ]
+    }
+  ]
+}

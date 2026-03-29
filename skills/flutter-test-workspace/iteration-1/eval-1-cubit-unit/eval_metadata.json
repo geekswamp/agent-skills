@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "cubit-unit",
+  "prompt": "Generate a unit test for this CounterCubit using bloc_test and mocktail.\n\n```dart\nclass CounterCubit extends Cubit<int> {\n  CounterCubit() : super(0);\n  void increment() => emit(state + 1);\n  void decrement() => emit(state - 1);\n}\n```",
+  "assertions": [
+    "The file is named 'counter_cubit_test.dart'",
+    "It uses 'package:bloc_test/bloc_test.dart'",
+    "It uses 'blocTest<CounterCubit, int>'",
+    "It tests the 'increment' action and expects [1]",
+    "It tests the 'decrement' action and expects [-1]",
+    "Arrange, Act, and Assert are clearly separated (implied by blocTest structure)"
+  ]
+}

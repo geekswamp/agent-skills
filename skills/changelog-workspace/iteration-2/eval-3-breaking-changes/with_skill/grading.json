@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "CHANGELOG.md contains the heading '## [3.0.0] - 2026-03-29'",
+      "passed": true,
+      "evidence": "Found heading"
+    },
+    {
+      "text": "CHANGELOG.md contains a '### Breaking Changes' section",
+      "passed": true,
+      "evidence": "Found Breaking Changes section"
+    },
+    {
+      "text": "The '### Breaking Changes' section appears after '### Added' and before '### Fixed' in the file",
+      "passed": true,
+      "evidence": "Order correct"
+    },
+    {
+      "text": "The breaking change entry references removing legacy API and PR (#88)",
+      "passed": true,
+      "evidence": "Found breaking change entry"
+    },
+    {
+      "text": "CHANGELOG.md does not contain a '### Changed' or '### Reverted' section",
+      "passed": true,
+      "evidence": "No empty sections found"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

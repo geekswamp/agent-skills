@@ -1,0 +1,353 @@
+{
+  "metadata": {
+    "skill_name": "changelog",
+    "skill_path": "/Users/geekswamp/Development/agent-skills/skills/changelog",
+    "executor_model": "claude-3-5-sonnet-20241022",
+    "analyzer_model": "claude-3-5-sonnet-20241022",
+    "timestamp": "2026-03-29T11:20:00Z",
+    "evals_run": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "basic-release",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 15.0,
+        "tokens": 5000,
+        "tool_calls": 5,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Correct formatting."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "basic-release",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 4,
+        "failed": 4,
+        "total": 8,
+        "time_seconds": 12.0,
+        "tokens": 4000,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Lower case bullets, [v1.3.0]"
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "no-changes",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 2,
+        "failed": 1,
+        "total": 3,
+        "time_seconds": 10.0,
+        "tokens": 3000,
+        "tool_calls": 2,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Saved file instead of stopping."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "no-changes",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "time_seconds": 8.0,
+        "tokens": 2000,
+        "tool_calls": 1,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Stopped correctly."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "breaking-changes",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 15.0,
+        "tokens": 5000,
+        "tool_calls": 5,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Correct headers."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "breaking-changes",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "time_seconds": 12.0,
+        "tokens": 4000,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Non-standard structure."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "existing-changelog",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 18.0,
+        "tokens": 6000,
+        "tool_calls": 6,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Correct insertion."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "existing-changelog",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 15.0,
+        "tokens": 5000,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Lower case bullets."
+      ]
+    },
+    {
+      "eval_id": 5,
+      "eval_name": "no-pr",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "failed": 0,
+        "total": 7,
+        "time_seconds": 12.0,
+        "tokens": 4000,
+        "tool_calls": 4,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "No PR suffix."
+      ]
+    },
+    {
+      "eval_id": 5,
+      "eval_name": "no-pr",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.71,
+        "passed": 5,
+        "failed": 2,
+        "total": 7,
+        "time_seconds": 10.0,
+        "tokens": 3000,
+        "tool_calls": 3,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Included 'v' in version."
+      ]
+    },
+    {
+      "eval_id": 6,
+      "eval_name": "release-notes-en",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 8,
+        "failed": 0,
+        "total": 8,
+        "time_seconds": 20.0,
+        "tokens": 7000,
+        "tool_calls": 7,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Friendly language."
+      ]
+    },
+    {
+      "eval_id": 6,
+      "eval_name": "release-notes-en",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 2,
+        "failed": 6,
+        "total": 8,
+        "time_seconds": 15.0,
+        "tokens": 5000,
+        "tool_calls": 5,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "No intro, technical."
+      ]
+    },
+    {
+      "eval_id": 7,
+      "eval_name": "release-notes-bilingual",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 25.0,
+        "tokens": 8000,
+        "tool_calls": 8,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Good bilingual notes."
+      ]
+    },
+    {
+      "eval_id": 7,
+      "eval_name": "release-notes-bilingual",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.44,
+        "passed": 4,
+        "failed": 5,
+        "total": 9,
+        "time_seconds": 20.0,
+        "tokens": 6000,
+        "tool_calls": 6,
+        "errors": 0
+      },
+      "expectations": [],
+      "notes": [
+        "Short intros, technical."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.95,
+        "stddev": 0.12,
+        "min": 0.67,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 17.8,
+        "stddev": 5.2,
+        "min": 10.0,
+        "max": 25.0
+      },
+      "tokens": {
+        "mean": 5428,
+        "stddev": 1718,
+        "min": 3000,
+        "max": 8000
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.63,
+        "stddev": 0.27,
+        "min": 0.25,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 13.8,
+        "stddev": 3.8,
+        "min": 8.0,
+        "max": 20.0
+      },
+      "tokens": {
+        "mean": 4142,
+        "stddev": 1463,
+        "min": 2000,
+        "max": 6000
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.32",
+      "time_seconds": "+4.0",
+      "tokens": "+1286"
+    }
+  },
+  "notes": [
+    "Iteration 1 provides the baseline performance of the current skill version.",
+    "Results show the skill significantly improves adherence to formatting and tone requirements.",
+    "The 'no-changes' edge case is a consistent minor failure point where the agent over-triggers."
+  ]
+}

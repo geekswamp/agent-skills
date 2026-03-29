@@ -1,0 +1,12 @@
+{
+  "eval_id": 3,
+  "eval_name": "breaking-changes",
+  "prompt": "Generate the changelog. The gen-changelog.sh script returned:\n\n```json\n{\n  \"last_tag\": \"v2.0.0\",\n  \"next_version\": \"v3.0.0\",\n  \"date\": \"2026-03-29\",\n  \"commits\": [\n    { \"category\": \"breaking\", \"message\": \"remove legacy API endpoints\", \"pr\": \"88\", \"breaking\": true },\n    { \"category\": \"added\", \"message\": \"add new REST API v2\", \"pr\": \"89\", \"breaking\": false },\n    { \"category\": \"fixed\", \"message\": \"fix token expiry not refreshing\", \"pr\": \"90\", \"breaking\": false }\n  ]\n}\n```",
+  "assertions": [
+    "CHANGELOG.md contains the heading '## [3.0.0] - 2026-03-29'",
+    "CHANGELOG.md contains a '### Breaking Changes' section",
+    "The '### Breaking Changes' section appears after '### Added' and before '### Fixed' in the file",
+    "The breaking change entry references removing legacy API and PR (#88)",
+    "CHANGELOG.md does not contain a '### Changed' or '### Reverted' section"
+  ]
+}

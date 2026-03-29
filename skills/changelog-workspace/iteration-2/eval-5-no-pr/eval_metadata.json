@@ -1,0 +1,14 @@
+{
+  "eval_id": 5,
+  "eval_name": "no-pr",
+  "prompt": "Generate the changelog. Script output:\n\n```json\n{\n  \"last_tag\": \"v1.0.0\",\n  \"next_version\": \"v1.0.1\",\n  \"date\": \"2026-03-29\",\n  \"commits\": [\n    { \"category\": \"fixed\", \"message\": \"fix button color on iOS\", \"pr\": \"\", \"breaking\": false }\n  ]\n}\n```",
+  "assertions": [
+    "CHANGELOG.md contains '## [1.0.1] - 2026-03-29'",
+    "CHANGELOG.md contains '### Fixed'",
+    "CHANGELOG.md does NOT contain '### Added'",
+    "CHANGELOG.md does NOT contain '### Breaking Changes'",
+    "CHANGELOG.md does NOT contain '### Changed'",
+    "CHANGELOG.md does NOT contain '### Reverted'",
+    "The Fixed entry does not contain any '(#' PR reference"
+  ]
+}

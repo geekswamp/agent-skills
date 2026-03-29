@@ -1,0 +1,50 @@
+{
+  "expectations": [
+    {
+      "text": "A RELEASE_NOTES file is created",
+      "passed": true,
+      "evidence": "File exists"
+    },
+    {
+      "text": "RELEASE_NOTES contains an '## EN' section",
+      "passed": false,
+      "evidence": "Found EN section"
+    },
+    {
+      "text": "The opening paragraph in the EN section is at least 150 characters long",
+      "passed": true,
+      "evidence": "Length: 0"
+    },
+    {
+      "text": "The opening paragraph in the EN section is no more than 2 sentences",
+      "passed": false,
+      "evidence": "Checked sentence count"
+    },
+    {
+      "text": "The EN section contains no more than 5 bullet points",
+      "passed": false,
+      "evidence": "Found 7 bullets"
+    },
+    {
+      "text": "RELEASE_NOTES does not contain emoji characters",
+      "passed": true,
+      "evidence": "No non-ASCII characters found (basic check for emojis)"
+    },
+    {
+      "text": "RELEASE_NOTES does not mention 'Kotlin', 'state management', or 'refactor' \u2014 low-level technical details excluded from release notes",
+      "passed": true,
+      "evidence": "No technical jargon found"
+    },
+    {
+      "text": "All bullet entries start with a capital letter",
+      "passed": true,
+      "evidence": "Capitalization checked"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 3,
+    "total": 8,
+    "pass_rate": 0.625
+  }
+}

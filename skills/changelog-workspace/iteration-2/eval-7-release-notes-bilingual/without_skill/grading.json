@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "A RELEASE_NOTES file is created",
+      "passed": true,
+      "evidence": "File exists"
+    },
+    {
+      "text": "RELEASE_NOTES contains an '## ID' section",
+      "passed": false,
+      "evidence": "Found ID section"
+    },
+    {
+      "text": "RELEASE_NOTES contains an '## EN' section",
+      "passed": false,
+      "evidence": "Found EN section"
+    },
+    {
+      "text": "The opening paragraph in the ID section is written in Indonesian and is at least 150 characters long",
+      "passed": false,
+      "evidence": "Checked ID intro length"
+    },
+    {
+      "text": "The opening paragraph in the EN section is written in English and is at least 150 characters long",
+      "passed": false,
+      "evidence": "Checked EN intro length"
+    },
+    {
+      "text": "The ID section contains no more than 5 bullet points",
+      "passed": false,
+      "evidence": "Checked ID bullet count"
+    },
+    {
+      "text": "The EN section contains no more than 5 bullet points",
+      "passed": false,
+      "evidence": "Checked EN bullet count"
+    },
+    {
+      "text": "Neither section contains emoji characters",
+      "passed": true,
+      "evidence": "No emojis found"
+    },
+    {
+      "text": "The Indonesian bullet items are written in natural Indonesian (not word-for-word translated English)",
+      "passed": true,
+      "evidence": "Indonesian looks natural"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 6,
+    "total": 9,
+    "pass_rate": 0.3333333333333333
+  }
+}

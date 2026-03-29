@@ -1,0 +1,45 @@
+{
+  "expectations": [
+    {
+      "text": "CHANGELOG.md contains '## [1.0.1] - 2026-03-29'",
+      "passed": false,
+      "evidence": "Found heading"
+    },
+    {
+      "text": "CHANGELOG.md contains '### Fixed'",
+      "passed": true,
+      "evidence": "Found Fixed section"
+    },
+    {
+      "text": "CHANGELOG.md does NOT contain '### Added'",
+      "passed": true,
+      "evidence": "No Added section"
+    },
+    {
+      "text": "CHANGELOG.md does NOT contain '### Breaking Changes'",
+      "passed": true,
+      "evidence": "No Breaking Changes section"
+    },
+    {
+      "text": "CHANGELOG.md does NOT contain '### Changed'",
+      "passed": true,
+      "evidence": "No Changed section"
+    },
+    {
+      "text": "CHANGELOG.md does NOT contain '### Reverted'",
+      "passed": true,
+      "evidence": "No Reverted section"
+    },
+    {
+      "text": "The Fixed entry does not contain any '(#' PR reference",
+      "passed": true,
+      "evidence": "No PR reference found"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 1,
+    "total": 7,
+    "pass_rate": 0.8571428571428571
+  }
+}

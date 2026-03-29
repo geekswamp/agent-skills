@@ -1,0 +1,15 @@
+{
+  "eval_id": 6,
+  "eval_name": "release-notes-en",
+  "prompt": "Please generate release notes for the App Store from the latest version in CHANGELOG.md.",
+  "assertions": [
+    "A RELEASE_NOTES file is created",
+    "RELEASE_NOTES contains an '## EN' section",
+    "The opening paragraph in the EN section is at least 150 characters long",
+    "The opening paragraph in the EN section is no more than 2 sentences",
+    "The EN section contains no more than 5 bullet points",
+    "RELEASE_NOTES does not contain emoji characters",
+    "RELEASE_NOTES does not mention 'Kotlin', 'state management', or 'refactor' — low-level technical details excluded from release notes",
+    "All bullet entries start with a capital letter"
+  ]
+}

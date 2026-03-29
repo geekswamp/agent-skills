@@ -1,0 +1,25 @@
+{
+  "expectations": [
+    {
+      "text": "The agent's response states that no changelog update is needed",
+      "passed": true,
+      "evidence": "Agent reported no update needed in transcript"
+    },
+    {
+      "text": "CHANGELOG.md is not created or modified",
+      "passed": true,
+      "evidence": "File does not exist as expected"
+    },
+    {
+      "text": "The agent does not proceed past this step",
+      "passed": true,
+      "evidence": "Agent stopped"
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  }
+}

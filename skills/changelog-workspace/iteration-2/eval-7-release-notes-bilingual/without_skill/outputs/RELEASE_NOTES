@@ -1,0 +1,15 @@
+# Release Notes - Version 4.0.0
+
+## App Store (English)
+What's New:
+- Added Face ID login for faster and more secure access.
+- Introducing Scheduled Payments: plan your transactions in advance with ease.
+- Fixed an issue where the balance was not updating correctly after a transaction.
+- Important: We have removed support for Android 7 and below to ensure better security and performance.
+
+## Google Play Store (Indonesian)
+Apa yang Baru:
+- Menambahkan login dengan Face ID untuk akses yang lebih cepat dan aman.
+- Memperkenalkan fitur Pembayaran Terjadwal: rencanakan transaksi Anda lebih awal dengan mudah.
+- Memperbaiki masalah di mana saldo tidak diperbarui setelah transaksi.
+- Penting: Kami telah menghentikan dukungan untuk Android 7 ke bawah guna memastikan keamanan dan performa yang lebih baik.

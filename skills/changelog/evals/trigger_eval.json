@@ -1,0 +1,22 @@
+[
+  {"query": "Can you update the CHANGELOG.md for our latest release? I need it to include the changes from the git history.", "should_trigger": true},
+  {"query": "Help me generate some release notes for the App Store. We just finished a bunch of features and I want them to look good for our users.", "should_trigger": true},
+  {"query": "What changed since the last version? Summarize the commits for me and put them in the changelog.", "should_trigger": true},
+  {"query": "We're preparing version 2.1.0. Can you create a new entry in the changelog with today's date and the recent fixed bugs?", "should_trigger": true},
+  {"query": "I need to announce our new updates on the Play Store. Could you write some friendly release notes in both English and Indonesian?", "should_trigger": true},
+  {"query": "Hey, look at the recent commits and tell me what we should put in the 'Breaking Changes' section of our CHANGELOG.md.", "should_trigger": true},
+  {"query": "Is it time for a new release? Run the script to see what's changed and update the project's changelog file.", "should_trigger": true},
+  {"query": "Make the release notes for our web app. Focus on the user-facing improvements and skip the technical refactoring stuff.", "should_trigger": true},
+  {"query": "Our CHANGELOG.md is missing the latest fixes. Can you add them based on the PRs we just merged?", "should_trigger": true},
+  {"query": "I want to see a summary of the 'Added' and 'Fixed' categories for the next version. Update the file accordingly.", "should_trigger": true},
+  {"query": "Can you help me write a commit message for these changes I just made? I want it to follow the conventional commits style.", "should_trigger": false},
+  {"query": "Show me the git log for the last 10 commits so I can see who worked on what.", "should_trigger": false},
+  {"query": "I need to create a new README.md for this project. Can you help me draft a good introduction and installation guide?", "should_trigger": false},
+  {"query": "Check the code for any security vulnerabilities and suggest fixes.", "should_trigger": false},
+  {"query": "Can you explain what this 'gen-changelog.sh' script does? I want to understand how it categorizes commits.", "should_trigger": false},
+  {"query": "Find all the TODO comments in the source code and list them for me.", "should_trigger": false},
+  {"query": "Draft an email to the team about our upcoming sprint planning meeting.", "should_trigger": false},
+  {"query": "Convert this JSON data into a Markdown table.", "should_trigger": false},
+  {"query": "I'm having trouble with git tags. How do I delete a tag locally and on the remote?", "should_trigger": false},
+  {"query": "Can you write a blog post about our company's history and core values?", "should_trigger": false}
+]

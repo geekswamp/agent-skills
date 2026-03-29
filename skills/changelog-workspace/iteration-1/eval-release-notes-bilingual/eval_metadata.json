@@ -1,0 +1,16 @@
+{
+  "eval_id": 7,
+  "eval_name": "release-notes-bilingual",
+  "prompt": "Can you generate release notes for both the Google Play Store (Indonesian) and App Store (English) based on the latest version in CHANGELOG.md?",
+  "assertions": [
+    "A RELEASE_NOTES file is created",
+    "RELEASE_NOTES contains an '## ID' section",
+    "RELEASE_NOTES contains an '## EN' section",
+    "The opening paragraph in the ID section is written in Indonesian and is at least 150 characters long",
+    "The opening paragraph in the EN section is written in English and is at least 150 characters long",
+    "The ID section contains no more than 5 bullet points",
+    "The EN section contains no more than 5 bullet points",
+    "Neither section contains emoji characters",
+    "The Indonesian bullet items are written in natural Indonesian (not word-for-word translated English)"
+  ]
+}

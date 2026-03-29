@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "CHANGELOG.md contains both '## [1.2.0] - 2026-03-29' and '## [1.1.0] - 2026-02-10'",
+      "passed": false,
+      "evidence": "Found both versions"
+    },
+    {
+      "text": "The 1.2.0 block appears before the 1.1.0 block in the file",
+      "passed": false,
+      "evidence": "Ordering correct"
+    },
+    {
+      "text": "The original title '# Changelog' is preserved",
+      "passed": false,
+      "evidence": "Title found"
+    },
+    {
+      "text": "The original intro paragraph 'All notable changes to this project will be documented in this file.' is preserved",
+      "passed": false,
+      "evidence": "Intro found"
+    },
+    {
+      "text": "The original 1.1.0 entries (dark mode, crash fix) are still present and unchanged",
+      "passed": false,
+      "evidence": "Previous entries preserved"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 5,
+    "total": 5,
+    "pass_rate": 0.0
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "skill_name": "changelog",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate the changelog for this project. Here is the output from the gen-changelog.sh script:\n\n```json\n{\n  \"last_tag\": \"v1.2.0\",\n  \"next_version\": \"v1.3.0\",\n  \"date\": \"2026-03-29\",\n  \"commits\": [\n    { \"category\": \"added\", \"message\": \"add dark mode support\", \"pr\": \"42\", \"breaking\": false },\n    { \"category\": \"added\", \"message\": \"add export to PDF feature\", \"pr\": \"45\", \"breaking\": false },\n    { \"category\": \"fixed\", \"message\": \"fix crash on empty list\", \"pr\": \"44\", \"breaking\": false }\n  ]\n}\n```",
+      "expected_output": "A new CHANGELOG.md containing a release block for version 1.3.0 dated 2026-03-29, with an Added section and a Fixed section. Each entry starts with a capital letter and includes the PR number.",
+      "files": [],
+      "expectations": [
+        "CHANGELOG.md contains the heading '## [1.3.0] - 2026-03-29'",
+        "CHANGELOG.md contains a '### Added' section",
+        "CHANGELOG.md contains a '### Fixed' section",
+        "The Added section contains an entry referencing dark mode and PR (#42)",
+        "The Added section contains an entry referencing PDF export and PR (#45)",
+        "The Fixed section contains an entry referencing the crash fix and PR (#44)",
+        "Every bullet entry starts with a capital letter",
+        "No empty section headings are present in CHANGELOG.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The script output contains no new commits. Here is what it returned:\n\nNo changes since last release.\n\nPlease update the changelog.",
+      "expected_output": "The agent reports that no changelog update is needed and stops without modifying any file.",
+      "files": [],
+      "expectations": [
+        "The agent's response states that no changelog update is needed",
+        "CHANGELOG.md is not created or modified",
+        "The agent does not proceed past this step"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Generate the changelog. The gen-changelog.sh script returned:\n\n```json\n{\n  \"last_tag\": \"v2.0.0\",\n  \"next_version\": \"v3.0.0\",\n  \"date\": \"2026-03-29\",\n  \"commits\": [\n    { \"category\": \"breaking\", \"message\": \"remove legacy API endpoints\", \"pr\": \"88\", \"breaking\": true },\n    { \"category\": \"added\", \"message\": \"add new REST API v2\", \"pr\": \"89\", \"breaking\": false },\n    { \"category\": \"fixed\", \"message\": \"fix token expiry not refreshing\", \"pr\": \"90\", \"breaking\": false }\n  ]\n}\n```",
+      "expected_output": "A CHANGELOG.md with version 3.0.0 containing Added, Breaking Changes, and Fixed sections in the correct order. The breaking change entry is isolated in its own Breaking Changes section.",
+      "files": [],
+      "expectations": [
+        "CHANGELOG.md contains the heading '## [3.0.0] - 2026-03-29'",
+        "CHANGELOG.md contains a '### Breaking Changes' section",
+        "The '### Breaking Changes' section appears after '### Added' and before '### Fixed' in the file",
+        "The breaking change entry references removing legacy API and PR (#88)",
+        "CHANGELOG.md does not contain a '### Changed' or '### Reverted' section"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I already have a CHANGELOG.md in the project. Please run the changelog script and update the changelog with version 1.2.0. The gen-changelog.sh output is:\n\n```json\n{\n  \"last_tag\": \"v1.1.0\",\n  \"next_version\": \"v1.2.0\",\n  \"date\": \"2026-03-29\",\n  \"commits\": [\n    { \"category\": \"added\", \"message\": \"add multi-language support\", \"pr\": \"55\", \"breaking\": false },\n    { \"category\": \"fixed\", \"message\": \"fix login redirect loop\", \"pr\": \"56\", \"breaking\": false }\n  ]\n}\n```",
+      "expected_output": "The existing CHANGELOG.md is updated with the new 1.2.0 release block inserted above the existing 1.1.0 block. The title, intro paragraph, and old release entries are preserved.",
+      "files": ["evals/files/CHANGELOG_existing.md"],
+      "expectations": [
+        "CHANGELOG.md contains both '## [1.2.0] - 2026-03-29' and '## [1.1.0] - 2026-02-10'",
+        "The 1.2.0 block appears before the 1.1.0 block in the file",
+        "The original title '# Changelog' is preserved",
+        "The original intro paragraph 'All notable changes to this project will be documented in this file.' is preserved",
+        "The original 1.1.0 entries (dark mode, crash fix) are still present and unchanged"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Generate the changelog. Script output:\n\n```json\n{\n  \"last_tag\": \"v1.0.0\",\n  \"next_version\": \"v1.0.1\",\n  \"date\": \"2026-03-29\",\n  \"commits\": [\n    { \"category\": \"fixed\", \"message\": \"fix button color on iOS\", \"pr\": \"\", \"breaking\": false }\n  ]\n}\n```",
+      "expected_output": "A CHANGELOG.md with only a Fixed section for version 1.0.1. No other section headings are rendered. The entry has no PR suffix since pr is empty.",
+      "files": [],
+      "expectations": [
+        "CHANGELOG.md contains '## [1.0.1] - 2026-03-29'",
+        "CHANGELOG.md contains '### Fixed'",
+        "CHANGELOG.md does NOT contain '### Added'",
+        "CHANGELOG.md does NOT contain '### Breaking Changes'",
+        "CHANGELOG.md does NOT contain '### Changed'",
+        "CHANGELOG.md does NOT contain '### Reverted'",
+        "The Fixed entry does not contain any '(#' PR reference"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Please generate release notes for the App Store from the latest version in CHANGELOG.md.",
+      "expected_output": "A RELEASE_NOTES file is created containing an English (EN) section with a friendly intro of at least 150 characters (max 2 sentences) and at most 5 user-facing improvement bullets. No emojis. Internal refactoring or dependency updates are excluded.",
+      "files": ["evals/files/CHANGELOG_for_release_notes.md"],
+      "expectations": [
+        "A RELEASE_NOTES file is created",
+        "RELEASE_NOTES contains an '## EN' section",
+        "The opening paragraph in the EN section is at least 150 characters long",
+        "The opening paragraph in the EN section is no more than 2 sentences",
+        "The EN section contains no more than 5 bullet points",
+        "RELEASE_NOTES does not contain emoji characters",
+        "RELEASE_NOTES does not mention 'Kotlin', 'state management', or 'refactor' — low-level technical details excluded from release notes",
+        "All bullet entries start with a capital letter"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Can you generate release notes for both the Google Play Store (Indonesian) and App Store (English) based on the latest version in CHANGELOG.md?",
+      "expected_output": "A RELEASE_NOTES file is created with both an ## ID and ## EN section. Each section has a friendly intro (min 150 chars, max 2 sentences) and at most 5 bullet points in the respective language. No emojis in either section.",
+      "files": ["evals/files/CHANGELOG_breaking.md"],
+      "expectations": [
+        "A RELEASE_NOTES file is created",
+        "RELEASE_NOTES contains an '## ID' section",
+        "RELEASE_NOTES contains an '## EN' section",
+        "The opening paragraph in the ID section is written in Indonesian and is at least 150 characters long",
+        "The opening paragraph in the EN section is written in English and is at least 150 characters long",
+        "The ID section contains no more than 5 bullet points",
+        "The EN section contains no more than 5 bullet points",
+        "Neither section contains emoji characters",
+        "The Indonesian bullet items are written in natural Indonesian (not word-for-word translated English)"
+      ]
+    }
+  ]
+}

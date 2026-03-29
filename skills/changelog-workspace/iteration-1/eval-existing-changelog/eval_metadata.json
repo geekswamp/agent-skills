@@ -1,0 +1,12 @@
+{
+  "eval_id": 4,
+  "eval_name": "existing-changelog",
+  "prompt": "I already have a CHANGELOG.md in the project. Please run the changelog script and update the changelog with version 1.2.0. The gen-changelog.sh output is:\n\n```json\n{\n  \"last_tag\": \"v1.1.0\",\n  \"next_version\": \"v1.2.0\",\n  \"date\": \"2026-03-29\",\n  \"commits\": [\n    { \"category\": \"added\", \"message\": \"add multi-language support\", \"pr\": \"55\", \"breaking\": false },\n    { \"category\": \"fixed\", \"message\": \"fix login redirect loop\", \"pr\": \"56\", \"breaking\": false }\n  ]\n}\n```",
+  "assertions": [
+    "CHANGELOG.md contains both '## [1.2.0] - 2026-03-29' and '## [1.1.0] - 2026-02-10'",
+    "The 1.2.0 block appears before the 1.1.0 block in the file",
+    "The original title '# Changelog' is preserved",
+    "The original intro paragraph 'All notable changes to this project will be documented in this file.' is preserved",
+    "The original 1.1.0 entries (dark mode, crash fix) are still present and unchanged"
+  ]
+}

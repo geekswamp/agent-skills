@@ -1,7 +1,7 @@
 ---
 name: changelog
-description: Generate and update project changelog entries from git commit history. Use when asked to create release notes, update CHANGELOG.md, or summarize changes between releases using the local changelog script and template.
-compatibility: Requires git
+description: Generate and update project changelog entries from git commit history. Use this skill whenever the user mentions changelogs, release notes, summarizing commits, or preparing for a new version. Trigger it for App Store, Play Store, or web app announcement requests, even if they do not explicitly ask for a 'changelog' file. This skill is also specialized for creating friendly, bilingual release notes for non-technical users.
+compatibility: Requires Git and Python 3.9+
 metadata:
   short-description: Generate changelog from git commits
   version: 1.0.0

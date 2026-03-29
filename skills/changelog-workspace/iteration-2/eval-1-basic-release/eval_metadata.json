@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "eval_name": "basic-release",
+  "prompt": "Generate the changelog for this project. Here is the output from the gen-changelog.sh script:\n\n```json\n{\n  \"last_tag\": \"v1.2.0\",\n  \"next_version\": \"v1.3.0\",\n  \"date\": \"2026-03-29\",\n  \"commits\": [\n    { \"category\": \"added\", \"message\": \"add dark mode support\", \"pr\": \"42\", \"breaking\": false },\n    { \"category\": \"added\", \"message\": \"add export to PDF feature\", \"pr\": \"45\", \"breaking\": false },\n    { \"category\": \"fixed\", \"message\": \"fix crash on empty list\", \"pr\": \"44\", \"breaking\": false }\n  ]\n}\n```",
+  "assertions": [
+    "CHANGELOG.md contains the heading '## [1.3.0] - 2026-03-29'",
+    "CHANGELOG.md contains a '### Added' section",
+    "CHANGELOG.md contains a '### Fixed' section",
+    "The Added section contains an entry referencing dark mode and PR (#42)",
+    "The Added section contains an entry referencing PDF export and PR (#45)",
+    "The Fixed section contains an entry referencing the crash fix and PR (#44)",
+    "Every bullet entry starts with a capital letter",
+    "No empty section headings are present in CHANGELOG.md"
+  ]
+}

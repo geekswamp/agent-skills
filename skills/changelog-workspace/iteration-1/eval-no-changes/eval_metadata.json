@@ -1,0 +1,10 @@
+{
+  "eval_id": 2,
+  "eval_name": "no-changes",
+  "prompt": "The script output contains no new commits. Here is what it returned:\n\nNo changes since last release.\n\nPlease update the changelog.",
+  "assertions": [
+    "The agent's response states that no changelog update is needed",
+    "CHANGELOG.md is not created or modified",
+    "The agent does not proceed past this step"
+  ]
+}

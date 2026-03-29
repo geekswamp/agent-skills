@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import argparse
 import re
+import sys
 from pathlib import Path
 
 CHANGELOG = Path("CHANGELOG.md")
@@ -12,15 +12,12 @@ MAX_CHARS = 2500
 
 def latest_release_block(text: str):
     parts = re.split(r"\n## ", text)
-
     if len(parts) < 2:
         raise RuntimeError("No release section found in CHANGELOG.md")
-
     return "## " + parts[1]
 
 
 def extract_changelog_by_category(block: str):
-
     categories = {}
     current = None
 
@@ -34,30 +31,22 @@ def extract_changelog_by_category(block: str):
 
         item = re.match(r"^- (.+)", line)
         if item and current:
-            text = item.group(1)
-
-            text = re.sub(r"\s*\(#\d+\)", "", text)
-
+            text = re.sub(r"\s*\(#\d+\)", "", item.group(1))
             categories[current].append(text)
 
     return categories
 
 
 def normalize_bullets(text: str):
-
     items = []
 
     for line in text.splitlines():
-
         line = line.strip()
-
         if not line:
             continue
 
         line = re.sub(r"^\d+\.\s*", "", line)
         line = re.sub(r"^[-*]\s*", "", line)
-
-        line = line.strip()
 
         if line:
             items.append(line)
@@ -65,49 +54,30 @@ def normalize_bullets(text: str):
     return items
 
 
-def capitalize_first(text):
-
-    if not text:
-        return text
-
-    return text[0].upper() + text[1:]
-
-
 def lint_items(items):
-
     clean = []
 
     for item in items:
-
         item = item.strip()
-
         item = re.sub(r"\.$", "", item)
-
-        item = capitalize_first(item)
-
+        item = item[0].upper() + item[1:] if item else item
         clean.append(item)
 
     return clean
 
 
 def detect_item_category(item, categories):
-
     item_lower = item.lower()
 
     for cat, commits in categories.items():
-
         for commit in commits:
-
-            words = commit.lower().split()
-
-            if any(w in item_lower for w in words):
+            if any(w in item_lower for w in commit.lower().split()):
                 return cat
 
     return "other"
 
 
 def rank_items(items, categories):
-
     priority = {
         "breaking": 1,
         "added": 2,
@@ -120,9 +90,7 @@ def rank_items(items, categories):
     ranked = []
 
     for item in items:
-
         cat = detect_item_category(item, categories)
-
         ranked.append((priority.get(cat, 6), item))
 
     ranked.sort(key=lambda x: x[0])
@@ -131,7 +99,12 @@ def rank_items(items, categories):
 
 
 def validate_against_changelog(items, categories):
-
+    """
+    Validates items against CHANGELOG entries by checking for shared words.
+    Only applied to English items — non-English translations are skipped
+    because CHANGELOG.md is written in English and word matching would fail
+    for other languages.
+    """
     changelog_items = []
 
     for commits in categories.values():
@@ -142,7 +115,6 @@ def validate_against_changelog(items, categories):
     valid = []
 
     for item in items:
-
         item_lower = item.lower()
 
         if any(word in item_lower for c in changelog_lower for word in c.split()):
@@ -152,9 +124,8 @@ def validate_against_changelog(items, categories):
 
 
 def build_section(intro, items):
-
     if not items:
-        raise RuntimeError("Release notes must contain at least one change.")
+        raise RuntimeError("Each language must contain at least one valid change.")
 
     text = intro.strip() + "\n\n"
 
@@ -164,67 +135,94 @@ def build_section(intro, items):
     text = text.strip()
 
     if len(text) > MAX_CHARS:
-        raise RuntimeError(
-            f"Release note section exceeds {MAX_CHARS} characters."
-        )
+        raise RuntimeError("Section exceeds max character limit")
 
     return text
 
 
+# ✅ NEW: parsing per language block
+def parse_languages(argv):
+
+    langs = []
+    current = None
+
+    i = 0
+    while i < len(argv):
+
+        arg = argv[i]
+
+        if arg == "--lang":
+            current = {
+                "code": argv[i + 1],
+                "intro": "",
+                "items": ""
+            }
+            langs.append(current)
+            i += 2
+            continue
+
+        if arg == "--intro":
+            if not current:
+                raise RuntimeError("--intro must come after --lang")
+            current["intro"] = argv[i + 1]
+            i += 2
+            continue
+
+        if arg == "--items":
+            if not current:
+                raise RuntimeError("--items must come after --lang")
+            current["items"] = argv[i + 1]
+            i += 2
+            continue
+
+        i += 1
+
+    if not langs:
+        raise RuntimeError("At least one --lang block is required")
+
+    return langs
+
+
 def main():
-
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument("--intro-id", required=True)
-    parser.add_argument("--intro-en", required=True)
-
-    parser.add_argument("--items-id", required=True)
-    parser.add_argument("--items-en", required=True)
-
-    args = parser.parse_args()
 
     if not CHANGELOG.exists():
         raise FileNotFoundError("CHANGELOG.md not found")
 
+    langs_input = parse_languages(sys.argv[1:])
+
     changelog_text = CHANGELOG.read_text()
-
     latest = latest_release_block(changelog_text)
-
     categories = extract_changelog_by_category(latest)
 
-    items_id = normalize_bullets(args.items_id)
-    items_en = normalize_bullets(args.items_en)
+    content = "# Release Notes\n\n"
 
-    items_id = lint_items(items_id)
-    items_en = lint_items(items_en)
+    for lang_data in langs_input:
 
-    items_id = validate_against_changelog(items_id, categories)
-    items_en = validate_against_changelog(items_en, categories)
+        code = lang_data["code"]
+        intro = lang_data["intro"]
+        items_raw = lang_data["items"]
 
-    if not items_id:
-        raise RuntimeError("Indonesian release notes must contain at least one valid change.")
+        items = normalize_bullets(items_raw)
+        items = lint_items(items)
 
-    if not items_en:
-        raise RuntimeError("English release notes must contain at least one valid change.")
+        # Validation against CHANGELOG is English-only.
+        # Non-English translations won't share words with the English CHANGELOG,
+        # so we trust the agent has correctly translated the items.
+        if code.lower() == "en":
+            items = validate_against_changelog(items, categories)
 
-    items_id = rank_items(items_id, categories)
-    items_en = rank_items(items_en, categories)
+        if not items:
+            raise RuntimeError(f"{code} must contain at least one valid change")
 
-    section_id = build_section(args.intro_id, items_id)
-    section_en = build_section(args.intro_en, items_en)
+        items = rank_items(items, categories)
 
-    content = f"""# Release Notes
+        section = build_section(intro, items)
 
-## Bahasa Indonesia
-{section_id}
+        content += f"## {code.upper()}\n{section}\n\n"
 
-## English
-{section_en}
-"""
+    OUTPUT.write_text(content.strip())
 
-    OUTPUT.write_text(content)
-
-    print(f"RELEASE_NOTES generated/updated: {OUTPUT}")
+    print(f"RELEASE_NOTES generated: {OUTPUT}")
 
 
 if __name__ == "__main__":

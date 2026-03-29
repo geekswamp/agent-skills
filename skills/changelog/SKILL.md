@@ -4,6 +4,7 @@ description: Generate and update project changelog entries from git commit histo
 compatibility: Requires git
 metadata:
   short-description: Generate changelog from git commits
+  version: 1.0.0
 ---
 
 # Generate Changelog

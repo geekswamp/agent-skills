@@ -4,6 +4,7 @@ description: Draft a Conventional Commit message from current repo changes. Use 
 compatibility: Requires git
 metadata:
   short-description: Draft an informative commit message.
+  version: 1.0.0
 ---
 
 Draft a conventional commit message that matches the change summary provided by the user.

@@ -3,6 +3,7 @@ name: flutter-test
 description: Generate high-quality Flutter tests for BLoC-based applications.
 metadata:
   short-description: Generate unit and widget tests using bloc_test and mocktail.
+  version: 1.0.0
 ---
 
 Generate Flutter tests following best practices for BLoC-based state management.

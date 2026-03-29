@@ -4,6 +4,7 @@ description: Generate deterministic Go unit tests using `testutil`, table-driven
 compatibility: Requires Go
 metadata:
   short-description: Deterministic Go tests with helpers, mocks, ≥80% coverage.
+  version: 1.0.0
 ---
 
 Generate Go unit tests for the provided code using Go testing best practices.

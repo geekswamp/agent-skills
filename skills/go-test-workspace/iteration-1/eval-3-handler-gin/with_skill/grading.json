@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "It uses 'testutil.NewGinEngine()'",
+      "passed": false,
+      "evidence": "testutil.NewGinEngine found"
+    },
+    {
+      "text": "It uses 'testutil.PerformGinRequest(t, engine, req)'",
+      "passed": false,
+      "evidence": "testutil.PerformGinRequest found"
+    },
+    {
+      "text": "It uses 'testutil.NewJSONRequest(t, ...)'",
+      "passed": false,
+      "evidence": "testutil.NewJSONRequest found"
+    },
+    {
+      "text": "It uses 'testutil.DecodeJSON' to verify the response body",
+      "passed": false,
+      "evidence": "testutil.DecodeJSON found"
+    },
+    {
+      "text": "It asserts the status code is 200",
+      "passed": true,
+      "evidence": "Status code check found"
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  }
+}

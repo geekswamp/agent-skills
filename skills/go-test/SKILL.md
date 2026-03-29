@@ -1,6 +1,6 @@
 ---
 name: go-test
-description: Generate deterministic Go unit tests using `testutil`, table-driven patterns, and infra mocks with ≥80% coverage.
+description: Generate deterministic, high-quality Go unit tests using table-driven patterns, infrastructure mocks, and project-specific helpers. Make sure to use this skill whenever the user mentions generating tests, writing test cases, increasing test coverage (aiming for ≥80%), or mocking dependencies like SQL (sqlmock), Redis (miniredis), or HTTP (Gin). It is optimized for table-driven test structures, deterministic data, and the mandatory use of the project's 'testutil' package. Use it for requests to create *_test.go files, implement unit tests for services or repositories, and ensure robust coverage of success and error paths.
 compatibility: Requires Go
 metadata:
   short-description: Deterministic Go tests with helpers, mocks, ≥80% coverage.

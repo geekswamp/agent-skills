@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "It uses 'testutil.NewSQLMock(t)'",
+      "passed": false,
+      "evidence": "testutil.NewSQLMock found"
+    },
+    {
+      "text": "It does NOT manually call sqlmock.New()",
+      "passed": false,
+      "evidence": "No manual sqlmock.New call"
+    },
+    {
+      "text": "It tests both the success path and the ErrNoRows case",
+      "passed": true,
+      "evidence": "ErrNoRows case found"
+    },
+    {
+      "text": "It uses 'testutil.AssertEqual' and 'testutil.RequireNoError' (or RequireError)",
+      "passed": false,
+      "evidence": "testutil helpers used"
+    },
+    {
+      "text": "It uses regexp matching for the SQL query",
+      "passed": true,
+      "evidence": "SQL query expectation found"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  }
+}

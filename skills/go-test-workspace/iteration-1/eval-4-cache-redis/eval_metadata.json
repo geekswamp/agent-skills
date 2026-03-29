@@ -1,0 +1,12 @@
+{
+  "eval_id": 4,
+  "eval_name": "cache-redis",
+  "prompt": "Generate a unit test for this CacheService that uses redis.Client.\n\n```go\npackage service\n\nimport (\n\t\"context\"\n\t\"github.com/redis/go-redis/v9\"\n\t\"time\"\n)\n\ntype CacheService struct {\n\trdb *redis.Client\n}\n\nfunc (s *CacheService) Set(ctx context.Context, key string, val string, ttl time.Duration) error {\n\treturn s.rdb.Set(ctx, key, val, ttl).Err()\n}\n```",
+  "assertions": [
+    "It uses 'testutil.NewRedisTestServer(t)'",
+    "It uses 'testutil.NewContext(t)' for the context parameter",
+    "It does NOT connect to a real Redis or localhost",
+    "It uses 'testutil.RequireNoError' for the service call",
+    "It verifies the key was set in Redis"
+  ]
+}

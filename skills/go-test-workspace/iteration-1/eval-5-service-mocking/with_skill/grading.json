@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "It creates a MockNotifier using 'github.com/stretchr/testify/mock'",
+      "passed": true,
+      "evidence": "testify mock found"
+    },
+    {
+      "text": "It uses table-driven tests for success and failure paths",
+      "passed": true,
+      "evidence": "Table-driven cases found"
+    },
+    {
+      "text": "It uses 'mock.On(...).Return(...)' to stub the Notify method",
+      "passed": true,
+      "evidence": "Mock stubbing found"
+    },
+    {
+      "text": "It uses 'mock.AssertExpectations(t)' or equivalent verification",
+      "passed": true,
+      "evidence": "Verification found"
+    },
+    {
+      "text": "It uses 'testutil.AssertError' to check for notification failures",
+      "passed": true,
+      "evidence": "Error check found"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

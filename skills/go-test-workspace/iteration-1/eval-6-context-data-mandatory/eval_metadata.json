@@ -1,0 +1,12 @@
+{
+  "eval_id": 6,
+  "eval_name": "context-data-mandatory",
+  "prompt": "Generate a unit test for this function that processes a user email. Use the project's standard test data.\n\n```go\npackage util\n\nimport \"context\"\n\nfunc ProcessUser(ctx context.Context, email string) error {\n\t// implementation irrelevant for test structure\n\treturn nil\n}\n```",
+  "assertions": [
+    "It uses 'testutil.NewContext(t)'",
+    "It does NOT use context.Background() or context.TODO()",
+    "It uses 'testutil.EmailAlice' (or another constant) instead of a literal string",
+    "It uses 'testutil.RequireNoError' for the function call",
+    "It follows the 'testutil.RunTableTests' pattern"
+  ]
+}

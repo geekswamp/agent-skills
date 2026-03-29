@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "sum-pure",
+  "prompt": "Generate a unit test for this Sum function.\n\n```go\npackage math\n\nfunc Sum(a, b int) int {\n  return a + b\n}\n```",
+  "assertions": [
+    "The file is named 'math_test.go'",
+    "It uses a table-driven test structure",
+    "It uses 'testutil.RunTableTests(t, table)'",
+    "It includes tests for positive, negative, and zero values",
+    "It uses 'testutil.AssertEqual' for result verification"
+  ]
+}

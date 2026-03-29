@@ -1,0 +1,12 @@
+{
+  "eval_id": 5,
+  "eval_name": "service-mocking",
+  "prompt": "Generate a unit test for this UserService that depends on a Notifier interface.\n\n```go\npackage service\n\ntype Notifier interface {\n\tNotify(message string) error\n}\n\ntype UserService struct {\n\tnotifier Notifier\n}\n\nfunc (s *UserService) WelcomeUser(name string) error {\n\treturn s.notifier.Notify(\"Welcome \" + name)\n}\n```",
+  "assertions": [
+    "It creates a MockNotifier using 'github.com/stretchr/testify/mock'",
+    "It uses table-driven tests for success and failure paths",
+    "It uses 'mock.On(...).Return(...)' to stub the Notify method",
+    "It uses 'mock.AssertExpectations(t)' or equivalent verification",
+    "It uses 'testutil.AssertError' to check for notification failures"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "repo-sql",
+  "prompt": "Generate a unit test for this UserRepository that uses sql.DB.\n\n```go\npackage repository\n\nimport \"database/sql\"\n\ntype UserRepository struct {\n  db *sql.DB\n}\n\nfunc (r *UserRepository) GetByID(id string) (string, error) {\n  var name string\n  err := r.db.QueryRow(\"SELECT name FROM users WHERE id = ?\", id).Scan(&name)\n  return name, err\n}\n```",
+  "assertions": [
+    "It uses 'testutil.NewSQLMock(t)'",
+    "It does NOT manually call sqlmock.New()",
+    "It tests both the success path and the ErrNoRows case",
+    "It uses 'testutil.AssertEqual' and 'testutil.RequireNoError' (or RequireError)",
+    "It uses regexp matching for the SQL query"
+  ]
+}

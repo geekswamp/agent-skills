@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "The file is named 'math_test.go'",
+      "passed": true,
+      "evidence": "File exists"
+    },
+    {
+      "text": "It uses a table-driven test structure",
+      "passed": true,
+      "evidence": "Table-driven pattern found"
+    },
+    {
+      "text": "It uses 'testutil.RunTableTests(t, table)'",
+      "passed": true,
+      "evidence": "testutil.RunTableTests found"
+    },
+    {
+      "text": "It includes tests for positive, negative, and zero values",
+      "passed": true,
+      "evidence": "Various test cases found"
+    },
+    {
+      "text": "It uses 'testutil.AssertEqual' for result verification",
+      "passed": true,
+      "evidence": "testutil.AssertEqual found"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

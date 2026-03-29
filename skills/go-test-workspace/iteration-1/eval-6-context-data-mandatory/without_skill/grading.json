@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "It uses 'testutil.NewContext(t)'",
+      "passed": true,
+      "evidence": "NewContext found"
+    },
+    {
+      "text": "It does NOT use context.Background() or context.TODO()",
+      "passed": true,
+      "evidence": "No standard context constructors used"
+    },
+    {
+      "text": "It uses 'testutil.EmailAlice' (or another constant) instead of a literal string",
+      "passed": true,
+      "evidence": "Test data constant found"
+    },
+    {
+      "text": "It uses 'testutil.RequireNoError' for the function call",
+      "passed": true,
+      "evidence": "Assertion helper found"
+    },
+    {
+      "text": "It follows the 'testutil.RunTableTests' pattern",
+      "passed": true,
+      "evidence": "RunTableTests found"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

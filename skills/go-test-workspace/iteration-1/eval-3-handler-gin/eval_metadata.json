@@ -1,0 +1,12 @@
+{
+  "eval_id": 3,
+  "eval_name": "handler-gin",
+  "prompt": "Generate a unit test for this Gin handler.\n\n```go\npackage handler\n\nimport \"github.com/gin-gonic/gin\"\n\nfunc HelloHandler(c *gin.Context) {\n  c.JSON(200, gin.H{\"message\": \"hello\"})\n}\n```",
+  "assertions": [
+    "It uses 'testutil.NewGinEngine()'",
+    "It uses 'testutil.PerformGinRequest(t, engine, req)'",
+    "It uses 'testutil.NewJSONRequest(t, ...)'",
+    "It uses 'testutil.DecodeJSON' to verify the response body",
+    "It asserts the status code is 200"
+  ]
+}

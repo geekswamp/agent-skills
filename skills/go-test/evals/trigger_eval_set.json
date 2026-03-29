@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Generate unit tests for my new payment service. I want 80% coverage and use table-driven tests.",
+    "should_trigger": true
+  },
+  {
+    "query": "Help me write some tests for this Repository. It uses database/sql, so I need to mock the DB.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you create a test file for this Gin handler? Use the project's testutil helpers.",
+    "should_trigger": true
+  },
+  {
+    "query": "Draft a comprehensive test suite for my Redis cache logic. Use miniredis.",
+    "should_trigger": true
+  },
+  {
+    "query": "I need some table-driven tests for this string utility function. Make sure to cover edge cases.",
+    "should_trigger": true
+  },
+  {
+    "query": "How do I use the testutil.RunTableTests helper? Give me an example for my math package.",
+    "should_trigger": true
+  },
+  {
+    "query": "Write a unit test that mocks this interface using testify/mock.",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm refactoring the user service and I need to update the unit tests to maintain coverage.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you help me reach 80% test coverage for this feature by adding more unit tests?",
+    "should_trigger": true
+  },
+  {
+    "query": "Generate a compilable math_test.go file for my Sum function.",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain how interfaces work in Go and why they are useful for testing.",
+    "should_trigger": false
+  },
+  {
+    "query": "Help me debug this 'nil pointer dereference' error in my Go application.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I set up a new Go module and install dependencies?",
+    "should_trigger": false
+  },
+  {
+    "query": "Check my Go code for any security vulnerabilities.",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you rewrite this loop to be more efficient?",
+    "should_trigger": false
+  },
+  {
+    "query": "Draft a commit message for the changes I just made to the tests.",
+    "should_trigger": false
+  },
+  {
+    "query": "What's the difference between a unit test and an integration test in Go?",
+    "should_trigger": false
+  },
+  {
+    "query": "Convert this JSON schema into a set of Go structs.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I run tests in parallel using the 'go test' command?",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a README.md for my new Go library.",
+    "should_trigger": false
+  }
+]

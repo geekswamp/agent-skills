@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "It uses 'testutil.NewRedisTestServer(t)'",
+      "passed": false,
+      "evidence": "NewRedisTestServer found"
+    },
+    {
+      "text": "It uses 'testutil.NewContext(t)' for the context parameter",
+      "passed": false,
+      "evidence": "NewContext found"
+    },
+    {
+      "text": "It does NOT connect to a real Redis or localhost",
+      "passed": true,
+      "evidence": "No hardcoded addresses found"
+    },
+    {
+      "text": "It uses 'testutil.RequireNoError' for the service call",
+      "passed": false,
+      "evidence": "RequireNoError found"
+    },
+    {
+      "text": "It verifies the key was set in Redis",
+      "passed": true,
+      "evidence": "Verification logic found"
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  }
+}

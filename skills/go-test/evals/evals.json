@@ -1,0 +1,83 @@
+{
+  "skill_name": "go-test",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "sum-pure",
+      "prompt": "Generate a unit test for this Sum function.\n\n```go\npackage math\n\nfunc Sum(a, b int) int {\n  return a + b\n}\n```",
+      "expected_output": "A math_test.go file using table-driven tests and testutil.RunTableTests.",
+      "expectations": [
+        "The file is named 'math_test.go'",
+        "It uses a table-driven test structure",
+        "It uses 'testutil.RunTableTests(t, table)'",
+        "It includes tests for positive, negative, and zero values",
+        "It uses 'testutil.AssertEqual' for result verification"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "repo-sql",
+      "prompt": "Generate a unit test for this UserRepository that uses sql.DB.\n\n```go\npackage repository\n\nimport \"database/sql\"\n\ntype UserRepository struct {\n  db *sql.DB\n}\n\nfunc (r *UserRepository) GetByID(id string) (string, error) {\n  var name string\n  err := r.db.QueryRow(\"SELECT name FROM users WHERE id = ?\", id).Scan(&name)\n  return name, err\n}\n```",
+      "expected_output": "A user_repository_test.go file using testutil.NewSQLMock.",
+      "expectations": [
+        "It uses 'testutil.NewSQLMock(t)'",
+        "It does NOT manually call sqlmock.New()",
+        "It tests both the success path and the ErrNoRows case",
+        "It uses 'testutil.AssertEqual' and 'testutil.RequireNoError' (or RequireError)",
+        "It uses regexp matching for the SQL query"
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "handler-gin",
+      "prompt": "Generate a unit test for this Gin handler.\n\n```go\npackage handler\n\nimport \"github.com/gin-gonic/gin\"\n\nfunc HelloHandler(c *gin.Context) {\n  c.JSON(200, gin.H{\"message\": \"hello\"})\n}\n```",
+      "expected_output": "A hello_handler_test.go file using testutil.NewGinEngine and testutil.PerformGinRequest.",
+      "expectations": [
+        "It uses 'testutil.NewGinEngine()'",
+        "It uses 'testutil.PerformGinRequest(t, engine, req)'",
+        "It uses 'testutil.NewJSONRequest(t, ...)'",
+        "It uses 'testutil.DecodeJSON' to verify the response body",
+        "It asserts the status code is 200"
+      ]
+    },
+    {
+      "id": 4,
+      "eval_name": "cache-redis",
+      "prompt": "Generate a unit test for this CacheService that uses redis.Client.\n\n```go\npackage service\n\nimport (\n\t\"context\"\n\t\"github.com/redis/go-redis/v9\"\n\t\"time\"\n)\n\ntype CacheService struct {\n\trdb *redis.Client\n}\n\nfunc (s *CacheService) Set(ctx context.Context, key string, val string, ttl time.Duration) error {\n\treturn s.rdb.Set(ctx, key, val, ttl).Err()\n}\n```",
+      "expected_output": "A service_test.go file using testutil.NewRedisTestServer and testutil.NewContext.",
+      "expectations": [
+        "It uses 'testutil.NewRedisTestServer(t)'",
+        "It uses 'testutil.NewContext(t)' for the context parameter",
+        "It does NOT connect to a real Redis or localhost",
+        "It uses 'testutil.RequireNoError' for the service call",
+        "It verifies the key was set in Redis"
+      ]
+    },
+    {
+      "id": 5,
+      "eval_name": "service-mocking",
+      "prompt": "Generate a unit test for this UserService that depends on a Notifier interface.\n\n```go\npackage service\n\ntype Notifier interface {\n\tNotify(message string) error\n}\n\ntype UserService struct {\n\tnotifier Notifier\n}\n\nfunc (s *UserService) WelcomeUser(name string) error {\n\treturn s.notifier.Notify(\"Welcome \" + name)\n}\n```",
+      "expected_output": "A user_service_test.go file using testify/mock for the Notifier interface.",
+      "expectations": [
+        "It creates a MockNotifier using 'github.com/stretchr/testify/mock'",
+        "It uses table-driven tests for success and failure paths",
+        "It uses 'mock.On(...).Return(...)' to stub the Notify method",
+        "It uses 'mock.AssertExpectations(t)' or equivalent verification",
+        "It uses 'testutil.AssertError' to check for notification failures"
+      ]
+    },
+    {
+      "id": 6,
+      "eval_name": "context-data-mandatory",
+      "prompt": "Generate a unit test for this function that processes a user email. Use the project's standard test data.\n\n```go\npackage util\n\nimport \"context\"\n\nfunc ProcessUser(ctx context.Context, email string) error {\n\t// implementation irrelevant for test structure\n\treturn nil\n}\n```",
+      "expected_output": "A unit test that strictly uses testutil.NewContext and testutil.EmailAlice.",
+      "expectations": [
+        "It uses 'testutil.NewContext(t)'",
+        "It does NOT use context.Background() or context.TODO()",
+        "It uses 'testutil.EmailAlice' (or another constant) instead of a literal string",
+        "It uses 'testutil.RequireNoError' for the function call",
+        "It follows the 'testutil.RunTableTests' pattern"
+      ]
+    }
+  ]
+}

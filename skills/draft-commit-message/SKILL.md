@@ -1,7 +1,7 @@
 ---
 name: draft-commit-message
-description: Draft a Conventional Commit message from current repo changes. Use when user asks for commit message help based on staged/unstaged git diff.
-compatibility: Requires git
+description: Draft a Conventional Commit message from current repo changes. Use this skill whenever the user asks for help writing, drafting, or formatting a commit message, especially when they refer to their git diff, staged changes, or recent work. Trigger it automatically when a user says they are "ready to commit," "finished a feature," or needs a "summary of what I did" for source control. This skill is optimized to follow Conventional Commits (type, scope, and imperative mood).
+compatibility: Requires Git
 metadata:
   short-description: Draft an informative commit message.
   version: 1.0.0

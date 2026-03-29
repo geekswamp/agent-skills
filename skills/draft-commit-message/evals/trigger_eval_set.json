@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Can you help me write a commit message for these changes? I just finished the login feature.",
+    "should_trigger": true
+  },
+  {
+    "query": "I've got some staged changes, what's a good conventional commit message for them?",
+    "should_trigger": true
+  },
+  {
+    "query": "Draft a commit message based on my git diff.",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm ready to commit, give me a summary of what I did and a message for it.",
+    "should_trigger": true
+  },
+  {
+    "query": "What should I put in my commit message? I refactored the database connection.",
+    "should_trigger": true
+  },
+  {
+    "query": "Help me with a fix(api) commit message for the token expiry bug.",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to commit my changes to the README. What's the right message?",
+    "should_trigger": true
+  },
+  {
+    "query": "Give me a draft commit message for my last few changes.",
+    "should_trigger": true
+  },
+  {
+    "query": "I've added some tests for the auth module. Can you draft a test(auth) commit message?",
+    "should_trigger": true
+  },
+  {
+    "query": "I just updated the dependencies. Help me write a chore(deps) commit message.",
+    "should_trigger": true
+  },
+  {
+    "query": "What's the status of my git repository?",
+    "should_trigger": false
+  },
+  {
+    "query": "Show me the last 5 commits in the main branch.",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to revert the last commit. How do I do that?",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a new branch called feature/new-login.",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you explain what Conventional Commits are?",
+    "should_trigger": false
+  },
+  {
+    "query": "I want to merge the develop branch into main.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I stash my current changes?",
+    "should_trigger": false
+  },
+  {
+    "query": "Draft a release note for version 1.0.0 based on the changelog.",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you check my code for any linting errors?",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a README.md for this new project.",
+    "should_trigger": false
+  }
+]

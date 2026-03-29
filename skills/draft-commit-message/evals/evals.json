@@ -1,0 +1,41 @@
+{
+  "skill_name": "draft-commit-message",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Draft a commit message for my changes. Here is the output from git-diff.sh:\n\n<<<SECTION:STATUS>>>\n M lib/auth/signup.dart\n<<<END:STATUS>>>\n\n<<<SECTION:DIFF_STAT_STAGED>>>\n lib/auth/signup.dart | 15 +++++++++++++++\n 1 file changed, 15 insertions(+)\n<<<END:DIFF_STAT_STAGED>>>\n\n<<<SECTION:DIFF_STAGED>>>\ndiff --git a/lib/auth/signup.dart b/lib/auth/signup.dart\nindex 1234567..890abcd 100644\n--- a/lib/auth/signup.dart\n+++ b/lib/auth/signup.dart\n@@ -10,6 +10,21 @@ class SignupPage {\n+  bool _validateEmail(String email) {\n+    return RegExp(r\"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\\$\").hasMatch(email);\n+  }\n<<<END:DIFF_STAGED>>>",
+      "expected_output": "A conventional commit message of type 'feat', with a scope like 'auth' or 'signup', and a summary about adding email validation.",
+      "expectations": [
+        "The message follows the format 'type(scope): summary'",
+        "The type is 'feat'",
+        "The summary is in imperative mood (e.g., 'add', 'implement')",
+        "The first line is 72 characters or less",
+        "The output contains only the commit message text"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Help me with a commit message for this fix in the README. Output from git-diff.sh:\n\n<<<SECTION:STATUS>>>\n M README.md\n<<<END:STATUS>>>\n\n<<<SECTION:DIFF_STAT_STAGED>>>\n README.md | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)\n<<<END:DIFF_STAT_STAGED>>>\n\n<<<SECTION:DIFF_STAGED>>>\ndiff --git a/README.md b/README.md\n--- a/README.md\n+++ b/README.md\n-Run `npm instal` to start.\n+Run `npm install` to start.\n<<<END:DIFF_STAGED>>>",
+      "expected_output": "A 'docs' commit message summarizing the typo fix in the README.",
+      "expectations": [
+        "The type is 'docs'",
+        "The scope is 'readme'",
+        "The summary describes fixing a typo or updating instructions",
+        "The summary is in imperative mood",
+        "The first line is 72 characters or less"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I've refactored the logger and it's a breaking change. Draft the commit message.\n\n<<<SECTION:STATUS>>>\n M lib/core/logger.dart\n<<<END:STATUS>>>\n\n<<<SECTION:DIFF_STAT_STAGED>>>\n lib/core/logger.dart | 50 ++++++++++++++++++++++++++++++------------------\n 1 file changed, 32 insertions(+), 18 deletions(-)\n<<<END:DIFF_STAT_STAGED>>>\n\n<<<SECTION:DIFF_STAGED>>>\n(diff showing migration to a new logging library and removal of old config methods)\n<<<END:DIFF_STAGED>>>",
+      "expected_output": "A 'refactor' commit message with 'BREAKING CHANGE:' in the footer.",
+      "expectations": [
+        "The type is 'refactor'",
+        "The footer contains 'BREAKING CHANGE:'",
+        "The summary is in imperative mood",
+        "The first line is 72 characters or less",
+        "The body or footer explains the breaking change"
+      ]
+    }
+  ]
+}

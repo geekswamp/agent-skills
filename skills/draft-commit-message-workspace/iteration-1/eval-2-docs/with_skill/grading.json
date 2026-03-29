@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "The type is 'docs'",
+      "passed": true,
+      "evidence": "Type: docs"
+    },
+    {
+      "text": "The scope is 'readme'",
+      "passed": true,
+      "evidence": "Found in: docs(readme): fix typo in npm install command"
+    },
+    {
+      "text": "The summary describes fixing a typo or updating instructions",
+      "passed": true,
+      "evidence": "Summary: docs(readme): fix typo in npm install command"
+    },
+    {
+      "text": "The summary is in imperative mood",
+      "passed": true,
+      "evidence": "Summary: docs(readme): fix typo in npm install command"
+    },
+    {
+      "text": "The first line is 72 characters or less",
+      "passed": true,
+      "evidence": "Length: 45"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

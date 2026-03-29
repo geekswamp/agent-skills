@@ -1,0 +1,5 @@
+refactor!: migrate logger to new library and remove legacy config
+
+Refactored the core logger implementation to use a new logging library. This change includes the removal of old configuration methods and introduces a more streamlined API.
+
+BREAKING CHANGE: The following legacy configuration methods have been removed from the logger. Existing implementations must migrate to the new library-based configuration.

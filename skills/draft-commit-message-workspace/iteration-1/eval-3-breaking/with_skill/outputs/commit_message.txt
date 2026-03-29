@@ -1,0 +1,6 @@
+refactor(core): migrate logger to new library
+
+- Replace old logging implementation with new library.
+- Remove obsolete configuration methods.
+
+BREAKING CHANGE: Logger API has changed. Migration to a new logging library requires updating existing calls and configuration.

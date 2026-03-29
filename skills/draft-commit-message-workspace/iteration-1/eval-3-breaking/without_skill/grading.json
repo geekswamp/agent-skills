@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "The type is 'refactor'",
+      "passed": true,
+      "evidence": "Type: refactor!: migrate logger to new library and remove legacy config"
+    },
+    {
+      "text": "The footer contains 'BREAKING CHANGE:'",
+      "passed": true,
+      "evidence": "Found footer"
+    },
+    {
+      "text": "The summary is in imperative mood",
+      "passed": true,
+      "evidence": "Summary: refactor!: migrate logger to new library and remove legacy config"
+    },
+    {
+      "text": "The first line is 72 characters or less",
+      "passed": true,
+      "evidence": "Length: 65"
+    },
+    {
+      "text": "The body or footer explains the breaking change",
+      "passed": true,
+      "evidence": "Verified explanation presence"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

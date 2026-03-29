@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "The type is 'docs'",
+      "passed": true,
+      "evidence": "Type: docs"
+    },
+    {
+      "text": "The scope is 'readme'",
+      "passed": false,
+      "evidence": "Found in: docs: fix typo in README installation instructions"
+    },
+    {
+      "text": "The summary describes fixing a typo or updating instructions",
+      "passed": true,
+      "evidence": "Summary: docs: fix typo in README installation instructions"
+    },
+    {
+      "text": "The summary is in imperative mood",
+      "passed": true,
+      "evidence": "Summary: docs: fix typo in README installation instructions"
+    },
+    {
+      "text": "The first line is 72 characters or less",
+      "passed": true,
+      "evidence": "Length: 50"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

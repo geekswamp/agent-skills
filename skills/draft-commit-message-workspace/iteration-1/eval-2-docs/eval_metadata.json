@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "docs",
+  "prompt": "Help me with a commit message for this fix in the README. Output from git-diff.sh:\n\n<<<SECTION:STATUS>>>\n M README.md\n<<<END:STATUS>>>\n\n<<<SECTION:DIFF_STAT_STAGED>>>\n README.md | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)\n<<<END:DIFF_STAT_STAGED>>>\n\n<<<SECTION:DIFF_STAGED>>>\ndiff --git a/README.md b/README.md\n--- a/README.md\n+++ b/README.md\n-Run `npm instal` to start.\n+Run `npm install` to start.\n<<<END:DIFF_STAGED>>>",
+  "assertions": [
+    "The type is 'docs'",
+    "The scope is 'readme'",
+    "The summary describes fixing a typo or updating instructions",
+    "The summary is in imperative mood",
+    "The first line is 72 characters or less"
+  ]
+}

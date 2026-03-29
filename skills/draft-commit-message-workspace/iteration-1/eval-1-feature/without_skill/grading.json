@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "The message follows the format 'type(scope): summary'",
+      "passed": true,
+      "evidence": "Found: feat(auth): add email validation to signup"
+    },
+    {
+      "text": "The type is 'feat'",
+      "passed": true,
+      "evidence": "Type: feat"
+    },
+    {
+      "text": "The summary is in imperative mood (e.g., 'add', 'implement')",
+      "passed": true,
+      "evidence": "Summary: feat(auth): add email validation to signup"
+    },
+    {
+      "text": "The first line is 72 characters or less",
+      "passed": true,
+      "evidence": "Length: 42"
+    },
+    {
+      "text": "The output contains only the commit message text",
+      "passed": true,
+      "evidence": "Check content structure"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

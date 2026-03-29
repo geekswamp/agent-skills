@@ -1,0 +1,12 @@
+{
+  "eval_id": 3,
+  "eval_name": "breaking",
+  "prompt": "I've refactored the logger and it's a breaking change. Draft the commit message.\n\n<<<SECTION:STATUS>>>\n M lib/core/logger.dart\n<<<END:STATUS>>>\n\n<<<SECTION:DIFF_STAT_STAGED>>>\n lib/core/logger.dart | 50 ++++++++++++++++++++++++++++++------------------\n 1 file changed, 32 insertions(+), 18 deletions(-)\n<<<END:DIFF_STAT_STAGED>>>\n\n<<<SECTION:DIFF_STAGED>>>\n(diff showing migration to a new logging library and removal of old config methods)\n<<<END:DIFF_STAGED>>>",
+  "assertions": [
+    "The type is 'refactor'",
+    "The footer contains 'BREAKING CHANGE:'",
+    "The summary is in imperative mood",
+    "The first line is 72 characters or less",
+    "The body or footer explains the breaking change"
+  ]
+}

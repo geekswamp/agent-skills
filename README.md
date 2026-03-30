@@ -62,7 +62,7 @@ bash skills/draft-commit-message/scripts/git-diff.sh
 bash skills/draft-commit-message/scripts/git-diff.sh <path>
 
 # Generate changelog source data (JSON)
-bash skills/changelog/scripts/gen_changelog.sh
+bash skills/changelog/scripts/gen-changelog.sh
 ```
 
 ## Local Development

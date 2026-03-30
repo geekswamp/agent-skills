@@ -37,19 +37,9 @@ Tone guidelines:
 - No emojis
 
 ## 4. Language Requirements
-Generate the release notes in **multiple languages** (at least Indonesian and English):
-
-### Indonesian
 - Maximum **2500 characters**
-- Friendly and easy to understand
-- Natural Indonesian wording
-
-### English
-- Maximum **2500 characters**
-- Clear and natural English
+- Clear and natural language
 - Avoid overly technical phrasing
-
-Additional languages (optional):
 - Follow the same tone and structure
 - Keep wording natural for native speakers
 
@@ -73,6 +63,7 @@ Notes:
   - Validate changes against `CHANGELOG.md`
   - Rank changes by importance
 - The script will overwrite or create the `RELEASE_NOTES` file.
+- **CRITICAL**: To generate the final output, you MUST ALWAYS use the `scripts/write-release-notes.py` script with the `--lang`, `--intro`, and `--items` parameters. Never create or edit the `RELEASE_NOTES` file manually.
 
 ## 6. Example Usage
 Example command:

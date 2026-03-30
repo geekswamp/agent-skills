@@ -4,26 +4,26 @@ description: Generate and update project changelog entries from git commit histo
 compatibility: Requires Git, jq, and Python 3.9+
 metadata:
   short-description: Generate changelog from git commits
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Generate Changelog
 Follow this workflow in order. Do not skip step 1.
 
 ## 1. Generate Source Data First
-Always run [gen-changelog.sh](./scripts/gen-changelog.sh) script:
+Always run the [gen-changelog.sh](./scripts/gen-changelog.sh) script, UNLESS the user provides the script output directly in their request.
 
 ```bash
 bash scripts/gen-changelog.sh
 ```
 
-Treat this command output as the single source of truth for:
+The JSON result will be generated when you run the `gen-changelog.sh` script. Treat this command output (or the provided output) as the single source of truth for:
 - `last_tag`
 - `next_version`
 - `date`
 - categorized commit list
 
-If output is `No changes since last release.`, report no changelog update is needed and stop.
+If the output is `No changes since last release.` (or no commits are found), there is **no need to create or update the changelog**. Report that no changelog update is needed and stop immediately without modifying any files.
 
 ## 2. Use the Changelog Template
 Use [CHANGELOG.md](./templates/CHANGELOG.md) as the rendering template for the new release block.
@@ -65,6 +65,6 @@ Before finishing, review the generated changelog to ensure the following:
 
 ## Additional Guidelines
 - When release notes are requested (for example for App Store, Play Store, or announcements), generate them based on the **latest version in `CHANGELOG.md`**.
-- Follow the guidelines defined in [`references/release_notes.md`](./references/release_notes.md).
+- Read and follow all guidelines defined in [`references/release_notes.md`](./references/release_notes.md).
 - Only include the **most important user-facing improvements** from that release.
 - Ensure the final release notes follow the **structure, tone, and language limits** specified in the reference file.

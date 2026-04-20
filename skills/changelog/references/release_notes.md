@@ -24,7 +24,7 @@ Transform the selected changes into short explanations that:
 Before listing the changes, add a **short opening sentence** that introduces the update.
 
 Rules for the opening sentence:
-- Minimum **150 characters**
+- Minimum **100 characters**
 - Maximum **2 sentences**
 - Keep it **friendly and concise**
 - Avoid technical terms
@@ -37,7 +37,7 @@ Tone guidelines:
 - No emojis
 
 ## 4. Language Requirements
-- Maximum **2500 characters**
+- Maximum **500 characters** per language
 - Clear and natural language
 - Avoid overly technical phrasing
 - Follow the same tone and structure
@@ -71,18 +71,18 @@ Example command:
 ```bash
 python3 scripts/write-release-notes.py \
 --lang id \
---intro "Kami menghadirkan beberapa pembaruan penting untuk membuat aplikasi lebih nyaman, stabil, dan mudah digunakan dalam aktivitas sehari-hari. Pembaruan ini juga membantu meningkatkan keandalan aplikasi agar pengalaman penggunaan menjadi lebih lancar." \
+--intro "Pembaruan ini hadir untuk membuat aplikasi lebih nyaman, stabil, dan mudah digunakan. Kami terus meningkatkan keandalan sistem agar pengalaman Anda lebih lancar." \
 --items "
-- Menambahkan fitur ekspor laporan agar data dapat diunduh dengan lebih mudah
-- Memperbaiki masalah login yang kadang membuat pengguna gagal masuk
-- Meningkatkan stabilitas aplikasi agar berjalan lebih lancar
+- Tambah fitur ekspor laporan untuk unduh data
+- Perbaiki masalah saat login ke aplikasi
+- Tingkatkan stabilitas performa aplikasi
 " \
 --lang en \
---intro "This update brings several improvements designed to make the app easier, more stable, and more comfortable to use in everyday situations. It also enhances overall reliability so the experience feels smoother and more dependable." \
+--intro "This update makes the app more comfortable, stable, and easy to use. We continuously improve system reliability to ensure a smoother experience for you." \
 --items "
-- Added a report export feature so users can download their data more easily
-- Fixed a login issue that sometimes prevented users from signing in
-- Improved overall app stability for a smoother experience
+- Added simple report export feature
+- Fixed issues when signing into the app
+- Improved overall application stability
 "
 ```
 

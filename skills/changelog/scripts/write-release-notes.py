@@ -7,7 +7,7 @@ from pathlib import Path
 CHANGELOG = Path("CHANGELOG.md")
 OUTPUT = Path("RELEASE_NOTES")
 
-MAX_CHARS = 2500
+MAX_CHARS = 500
 
 
 def latest_release_block(text: str):
@@ -140,7 +140,6 @@ def build_section(intro, items):
     return text
 
 
-# ✅ NEW: parsing per language block
 def parse_languages(argv):
 
     langs = []
